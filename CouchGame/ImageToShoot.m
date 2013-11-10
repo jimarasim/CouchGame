@@ -61,7 +61,7 @@
     //move the bullet up
     [self setPosition:CGPointMake(self.frame.origin.x, self.frame.origin.y-self.animationStep)];
     
-    //check if anything is hit
+    //check if an image to hit is hit
     // Get the subviews of the view
     NSArray *subviews = [self.superview subviews];
     
@@ -87,7 +87,6 @@
             }
         }
     }
-    subviews = nil;
 
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "ImageToDrag.h"
-#import "ImageToShoot.h"
 
 @implementation ImageToDrag
 
@@ -32,6 +31,16 @@
     //setup a tap gesture recognizer, for when this image is tapped
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self addGestureRecognizer:tapRecognizer];
+    
+    //setup sequence of images to play when the couch is touched
+    self.animationArray = [NSArray arrayWithObjects:
+                            [UIImage imageNamed:@"couch1.png"],
+                            [UIImage imageNamed:@"couch2.png"],
+                            [UIImage imageNamed:@"couch3.png"],
+                            nil];
+    self.animationImages = self.animationArray;
+    self.animationDuration = 1.0;
+    self.animationRepeatCount = 1;
     
     
     return self;
@@ -90,6 +99,17 @@
     }
 }
 
+//animation to play when the couch is touched
+-(void)TouchCouchAnimation
+{
+    if(![self isAnimating])
+    {
+        [self startAnimating];
+        
+        //decrement score when couch is touched
+        [self.delegate AdjustScore:-15];
+    }
+}
 
 
 /*

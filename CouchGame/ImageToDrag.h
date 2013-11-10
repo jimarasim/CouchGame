@@ -12,6 +12,7 @@
 @protocol ImageToDragDelegate <NSObject>
 @required
 -(void)Fire;
+-(void)AdjustScore:(int)points;
 @end
 
 @interface ImageToDrag : UIImageView
@@ -23,5 +24,10 @@
 //access to the registered delegate
 @property (weak, nonatomic) id <ImageToDragDelegate> delegate;
 
+//array of animation images
+@property NSArray * animationArray;
+
+//method to animate couch when it gets touched
+-(void)TouchCouchAnimation;
 
 @end

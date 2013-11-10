@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CouchGame/ImageToHit.m"
-            timestampString = "405729824.65772"
+            timestampString = "405780848.294985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-PlaceImageAtTop"
             landmarkType = "5">
          </BreakpointContent>

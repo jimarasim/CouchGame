@@ -22,6 +22,9 @@
 		E2798FF418179C7600BC853F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD618179C7600BC853F /* UIKit.framework */; };
 		E2798FFC18179C7600BC853F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2798FFA18179C7600BC853F /* InfoPlist.strings */; };
 		E2798FFE18179C7600BC853F /* CouchGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2798FFD18179C7600BC853F /* CouchGameTests.m */; };
+		E2C6DC50182FB317006E80D7 /* couch1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4D182FB317006E80D7 /* couch1.png */; };
+		E2C6DC51182FB317006E80D7 /* couch2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4E182FB317006E80D7 /* couch2.png */; };
+		E2C6DC52182FB317006E80D7 /* couch3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4F182FB317006E80D7 /* couch3.png */; };
 		E2E01F6618209F2C0016344B /* ImageToDrag.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E01F6518209F2C0016344B /* ImageToDrag.m */; };
 		E2EBBBE51825AC040094BF5B /* fireshot.png in Resources */ = {isa = PBXBuildFile; fileRef = E2EBBBE41825AC040094BF5B /* fireshot.png */; };
 		E2EBBBE81825AC410094BF5B /* ImageToShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EBBBE71825AC410094BF5B /* ImageToShoot.m */; };
@@ -60,6 +63,9 @@
 		E2798FF918179C7600BC853F /* CouchGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CouchGameTests-Info.plist"; sourceTree = "<group>"; };
 		E2798FFB18179C7600BC853F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2798FFD18179C7600BC853F /* CouchGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouchGameTests.m; sourceTree = "<group>"; };
+		E2C6DC4D182FB317006E80D7 /* couch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch1.png; sourceTree = "<group>"; };
+		E2C6DC4E182FB317006E80D7 /* couch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch2.png; sourceTree = "<group>"; };
+		E2C6DC4F182FB317006E80D7 /* couch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch3.png; sourceTree = "<group>"; };
 		E2E01F6418209F2C0016344B /* ImageToDrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDrag.h; sourceTree = "<group>"; };
 		E2E01F6518209F2C0016344B /* ImageToDrag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDrag.m; sourceTree = "<group>"; };
 		E2EBBBE41825AC040094BF5B /* fireshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireshot.png; sourceTree = "<group>"; };
@@ -151,6 +157,9 @@
 				E2798FDB18179C7600BC853F /* InfoPlist.strings */,
 				E2EBBBE41825AC040094BF5B /* fireshot.png */,
 				E2FBB0F9182B680300F1A654 /* lamp.png */,
+				E2C6DC4D182FB317006E80D7 /* couch1.png */,
+				E2C6DC4E182FB317006E80D7 /* couch2.png */,
+				E2C6DC4F182FB317006E80D7 /* couch3.png */,
 				E20230C418221E1B00FFCAD8 /* couch.png */,
 				E2798FDE18179C7600BC853F /* main.m */,
 				E2798FE018179C7600BC853F /* CouchGame-Prefix.pch */,
@@ -254,6 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2798FEB18179C7600BC853F /* Images.xcassets in Resources */,
+				E2C6DC51182FB317006E80D7 /* couch2.png in Resources */,
+				E2C6DC52182FB317006E80D7 /* couch3.png in Resources */,
+				E2C6DC50182FB317006E80D7 /* couch1.png in Resources */,
 				E2FBB0FA182B680300F1A654 /* lamp.png in Resources */,
 				E20230C518221E1B00FFCAD8 /* couch.png in Resources */,
 				E2EBBBE51825AC040094BF5B /* fireshot.png in Resources */,

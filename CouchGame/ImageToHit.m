@@ -7,6 +7,7 @@
 //
 
 #import "ImageToHit.h"
+#import "ImageToDrag.h"
 
 @implementation ImageToHit
 
@@ -54,6 +55,31 @@
     
     //move the hit image down
     [self setPosition:CGPointMake(self.frame.origin.x, self.frame.origin.y+self.animationStep)];
+    
+    //check if it's hit the couch
+    // Get the subviews of the view
+    NSArray *subviews = [self.superview subviews];
+    
+    // skip if there are no subviews
+    if ([subviews count] > 0)
+    {
+        //loop through all the subviews
+        for (UIView *subview in subviews)
+        {
+            //only look for images to hit
+            if([subview isKindOfClass:[ImageToDrag class]])
+            {
+                //check if couch is hit
+                if(CGRectContainsPoint(subview.frame, self.center))
+                {
+                    //play couch hit animation
+                    [(ImageToDrag*)subview TouchCouchAnimation];
+                    
+                }
+            }
+        }
+    }
+
 }
 
 //getter for position
@@ -76,7 +102,7 @@
     [self.checkPositionTimer invalidate];
     
     //make it disappear
-    [UIView animateWithDuration:0.05
+    [UIView animateWithDuration:0.1
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{[self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 0, 0)];}
