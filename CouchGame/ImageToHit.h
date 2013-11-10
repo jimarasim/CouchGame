@@ -1,0 +1,36 @@
+//
+//  ImageToHit.h
+//  CouchGame
+//
+//  Created by JAMES K ARASIM on 11/6/13.
+//  Copyright (c) 2013 JAMES K ARASIM. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+//delegate method implemented by viewcontroller when image is hit; to update the score
+@protocol ImageToHitDelegate <NSObject>
+@required
+-(void)AdjustScore:(int)points;
+@end
+
+
+@interface ImageToHit : UIImageView
+
+//access to the registered delegate
+@property (weak, nonatomic) id <ImageToHitDelegate> delegate;
+
+@property (strong) NSTimer * checkPositionTimer;
+
+@property float timerIncrement;
+
+@property int animationStep;
+
+-(void)PlaceImageAtTop;
+
+-(void)HitImage;
+
+-(CGPoint) position;
+-(void)setPosition:(CGPoint)position;
+
+@end
