@@ -25,7 +25,6 @@
 //when initializing with the image, make this imageview available to user interaction
 - (id)initWithImage:(UIImage *)image
 {
-    //make user interations enabled for tapping and dragging
     self = [super initWithImage:image];
     
     //set the timer interval
@@ -34,7 +33,10 @@
     //set the animation step (how many points or pixels the image moves at each timer interval)
     self.animationStep=3;
     
-    //kick off the timer
+    //set default point value
+    self.points = 15;
+    
+    //kick off the timer for moving the image down
     self.checkPositionTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
                                                                target:self
                                                              selector:@selector(changePosition)
@@ -102,7 +104,7 @@
     [self.checkPositionTimer invalidate];
     
     //make it disappear
-    [UIView animateWithDuration:0.1
+    [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{[self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 0, 0)];}
@@ -112,7 +114,7 @@
                      }];
     
     //increment the score
-    [self.delegate AdjustScore:15];
+    [self.delegate AdjustScore:self.points];
     
 }
 

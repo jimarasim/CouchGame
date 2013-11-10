@@ -26,6 +26,8 @@
 
 @property int animationStep;
 
+@property int points;
+
 -(void)PlaceImageAtTop;
 
 -(void)HitImage;

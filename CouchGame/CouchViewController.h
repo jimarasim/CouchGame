@@ -21,9 +21,7 @@
 
 @property ImageToDrag * couch;
 
-@property NSTimer * addLampTimer; //timer for dropping objects to hit
-
-@property UIImage * scaledLamp; //image to use for objects to hit
+@property NSTimer * addTargetTimer; //timer for dropping objects to hit
 
 @property UIImage * fireBullet; //image to use for fire bullets
 
@@ -31,10 +29,14 @@
 
 @property int maxObjects; //for keeping track of total objects in the view at one time
 
+@property int duration; //for keeping track of how long the game has gone
+
 -(void)AddAnImageToHit; //for adding objects to hit to the main view
 
 -(void)AdjustScore:(int)points; //for adding/removing points to the overall score, required by delegates
 
 -(void)Fire;
+
+-(void)EndGame; //for ending the game for whatever reason
 
 @end

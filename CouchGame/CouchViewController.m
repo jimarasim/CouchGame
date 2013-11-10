@@ -22,6 +22,9 @@
     //initialize the score
     self.nScore = 0;
     
+    //initialize the duration
+    self.duration = 0;
+    
     //create a couch image and scale it down
     // grab the original image
     UIImage *originalCouch = [UIImage imageNamed:@"couch.png"];
@@ -38,14 +41,6 @@
     //set this up as the couch's delegate when it wants to shoot
     self.couch.delegate = self;
     [self.view addSubview:self.couch];
-    
-    //create the lamp image to use for all lamps
-    // grab the original image
-    UIImage *originalLamp = [UIImage imageNamed:@"lamp.png"];
-    // scaling set to 2.0 makes the image 1/2 the size.
-    self.scaledLamp =[UIImage imageWithCGImage:[originalLamp CGImage]
-                                             scale:(originalLamp.scale * 2.0)
-                                       orientation:(originalLamp.imageOrientation)];
 
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
@@ -54,10 +49,10 @@
     self.maxObjects = 10;
     
     //set the timer interval for adding objects to hit
-    self.timerIncrement = 1.0;
+    self.timerIncrement = 1;
     
     //kick off the timer for objects to hit
-    self.addLampTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
+    self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
                                                                target:self
                                                              selector:@selector(AddAnImageToHit)
                                                              userInfo:nil
@@ -68,26 +63,63 @@
 
 -(void)AddAnImageToHit
 {
+    //increment the duration (for tracking when the game should end)
+    self.duration += 1;
     
-    //don't add a lamp if there are already a lot
-    NSArray *subviews = [self.view subviews];
+    //end the game after so long
+    if(self.duration>60)
+    {
+        [self EndGame];
+        return;
+    }
     
-    // skip if there are no subviews
-    if ([subviews count] >= self.maxObjects)
+    //don't add a target if there are already a lot
+    if ([[self.view subviews] count] >= self.maxObjects)
     {
         return;
     }
     
-    //create a lamp to shoot
-    ImageToHit *lamp = [[ImageToHit alloc] initWithImage:self.scaledLamp];
+    //select the target image based on points
+    UIImage *targetImage;
+    int points=15;
+    int animationStep=3;
     
-    //set this up as the lamps delegate for when it's hit, and the score needs to be adjusted
-    lamp.delegate=self;
+    if(self.nScore > 200)
+    {
+        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
+        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
+                                        scale:(originalCoffeeTable.scale * 3.0)
+                                  orientation:(originalCoffeeTable.imageOrientation)];
+        points = 50;
+        animationStep=5;
+    }
+    else
+    {
+        // grab the original image
+        UIImage *originalLamp = [UIImage imageNamed:@"lamp.png"];
+        // scaling set to 2.0 makes the image 1/2 the size.
+        targetImage=[UIImage imageWithCGImage:[originalLamp CGImage]
+                                         scale:(originalLamp.scale * 2.0)
+                                   orientation:(originalLamp.imageOrientation)];
+    }
     
-    [self.view addSubview:lamp];
     
-    //put lamp at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
-    [lamp PlaceImageAtTop];
+    //create a target to shoot
+    ImageToHit *target = [[ImageToHit alloc] initWithImage:targetImage];
+    
+    //set the targets point value
+    target.points = points;
+    
+    //set the targets speed
+    target.animationStep = animationStep;
+    
+    //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
+    target.delegate=self;
+    
+    [self.view addSubview:target];
+    
+    //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
+    [target PlaceImageAtTop];
 }
 
 //required as an ImageToHit and ImageToShoot delegate
@@ -113,6 +145,23 @@
     
     [self.view addSubview:fireBulletLeft];
     [self.view addSubview:fireBulletRight];
+}
+
+-(void)EndGame
+{
+    //remove all the views
+    NSArray *subviews = [self.view subviews];
+    for (UIView *subview in subviews)
+    {
+        [subview removeFromSuperview];
+    }
+    
+    //stop the game timer
+    [self.addTargetTimer invalidate];
+    
+    
+    //call the game over segue
+    [self performSegueWithIdentifier: @"GameOverSegue" sender: self];
 }
 
 - (void)didReceiveMemoryWarning

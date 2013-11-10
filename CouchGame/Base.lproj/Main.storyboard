@@ -30,11 +30,38 @@
                     <navigationItem key="navigationItem" id="rZi-cs-cRd"/>
                     <connections>
                         <outlet property="score" destination="OEw-Ch-Drd" id="3YP-vk-mzq"/>
+                        <segue destination="80z-56-67w" kind="modal" identifier="GameOverSegue" id="uq1-df-1RU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463" y="25"/>
+            <point key="canvasLocation" x="433" y="33"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2hE-5Q-NkJ">
+            <objects>
+                <viewController id="80z-56-67w" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PxX-pM-qpE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z9g-IR-fpn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PlC-C8-wgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsp-TN-hYT">
+                                <rect key="frame" x="112" y="113" width="121" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2QU-2j-GSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="39"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A6y-AD-SDU">
@@ -55,7 +82,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" id="ASP-ym-0wc"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="StartGameSegue" id="ASP-ym-0wc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couch Game!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-Bv-zmI">
