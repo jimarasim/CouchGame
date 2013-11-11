@@ -108,6 +108,9 @@
         
         //decrement score when couch is touched
         [self.delegate AdjustScore:-15];
+        
+        //decrement lives when couch is touched
+        [self.delegate AdjustLives:-1];
     }
 }
 

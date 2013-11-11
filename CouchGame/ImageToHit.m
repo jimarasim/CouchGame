@@ -23,12 +23,12 @@
 */
 
 //when initializing with the image, make this imageview available to user interaction
-- (id)initWithImage:(UIImage *)image
+- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc
 {
     self = [super initWithImage:image];
     
     //set the timer interval
-    self.timerIncrement = 0.05;
+    self.timerIncrement = tinc;
     
     //set the animation step (how many points or pixels the image moves at each timer interval)
     self.animationStep=3;

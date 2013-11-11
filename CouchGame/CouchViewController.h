@@ -31,6 +31,8 @@
 
 @property int duration; //for keeping track of how long the game has gone
 
+@property int lives; //for keeping track of couch lives
+
 -(void)AddAnImageToHit; //for adding objects to hit to the main view
 
 -(void)AdjustScore:(int)points; //for adding/removing points to the overall score, required by delegates

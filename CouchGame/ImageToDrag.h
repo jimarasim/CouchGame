@@ -13,6 +13,7 @@
 @required
 -(void)Fire;
 -(void)AdjustScore:(int)points;
+-(void)AdjustLives:(int)lives;
 @end
 
 @interface ImageToDrag : UIImageView

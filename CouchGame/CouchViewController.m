@@ -22,8 +22,17 @@
     //initialize the score
     self.nScore = 0;
     
-    //initialize the duration
+    //initialize the duration of the game
     self.duration = 0;
+    
+    //initialize the couch lives allowed (decremented when couch is touched)
+    self.lives = 3;
+    
+    //set the maximum number of objects in the view at once (to limit images to hit)
+    self.maxObjects = 15;
+    
+    //set the timer interval for adding objects to hit (seconds)
+    self.timerIncrement = 1;
     
     //create a couch image and scale it down
     // grab the original image
@@ -45,12 +54,6 @@
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
     
-    //set the maximum number of objects to hit
-    self.maxObjects = 10;
-    
-    //set the timer interval for adding objects to hit
-    self.timerIncrement = 1;
-    
     //kick off the timer for objects to hit
     self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
                                                                target:self
@@ -63,15 +66,8 @@
 
 -(void)AddAnImageToHit
 {
-    //increment the duration (for tracking when the game should end)
+    //increment the duration of the game
     self.duration += 1;
-    
-    //end the game after so long
-    if(self.duration>60)
-    {
-        [self EndGame];
-        return;
-    }
     
     //don't add a target if there are already a lot
     if ([[self.view subviews] count] >= self.maxObjects)
@@ -79,19 +75,27 @@
         return;
     }
     
-    //select the target image based on points
-    UIImage *targetImage;
-    int points=15;
-    int animationStep=3;
+    UIImage *targetImage; //image to drop
+    int points=15; //default points for the image
+    float timerIncrement=0.05; //default speed of the image
     
-    if(self.nScore > 200)
+    if(self.duration % 5==0)
+    {
+        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
+        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
+                                        scale:(originalCoffeeTable.scale * 3.0)
+                                  orientation:(originalCoffeeTable.imageOrientation)];
+        points = 100;
+        timerIncrement=0.01;
+    }
+    else if(self.duration % 2==0)
     {
         UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
         targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
                                         scale:(originalCoffeeTable.scale * 3.0)
                                   orientation:(originalCoffeeTable.imageOrientation)];
         points = 50;
-        animationStep=5;
+        timerIncrement=0.03;
     }
     else
     {
@@ -101,35 +105,37 @@
         targetImage=[UIImage imageWithCGImage:[originalLamp CGImage]
                                          scale:(originalLamp.scale * 2.0)
                                    orientation:(originalLamp.imageOrientation)];
+        
     }
     
     
     //create a target to shoot
-    ImageToHit *target = [[ImageToHit alloc] initWithImage:targetImage];
+    ImageToHit *target = [[ImageToHit alloc] initWithImage:targetImage withTimerIncrement:timerIncrement];
     
     //set the targets point value
     target.points = points;
     
     //set the targets speed
-    target.animationStep = animationStep;
+    target.timerIncrement = timerIncrement;
     
     //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
     target.delegate=self;
     
+    //add the target to the view
     [self.view addSubview:target];
     
     //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
     [target PlaceImageAtTop];
 }
 
-//required as an ImageToHit and ImageToShoot delegate
+//required as an ImageToHit and ImageToShoot and ImageToDrag delegate
 -(void)AdjustScore:(int)points
 {
     self.nScore += points;
     self.score.text =[NSString stringWithFormat:@"%d", self.nScore];
 }
 
-//required by ImageToDrag delegate
+//required by ImageToDrag delegate for firing bullets
 -(void)Fire
 {
     //create a fire bullets. bullets will remove themselves from the view when its position is less than 0
@@ -145,6 +151,20 @@
     
     [self.view addSubview:fireBulletLeft];
     [self.view addSubview:fireBulletRight];
+}
+
+//required by ImageToDrag delegate for losing lives (can be called to add lives too)
+-(void)AdjustLives:(int)lives
+{
+    //adjust the lives count
+    self.lives += lives;
+    
+    //end the game if there are no more
+    if(self.lives<=0)
+    {
+        [self EndGame];
+    }
+    
 }
 
 -(void)EndGame

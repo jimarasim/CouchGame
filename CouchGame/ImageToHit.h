@@ -17,6 +17,8 @@
 
 @interface ImageToHit : UIImageView
 
+- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc;
+
 //access to the registered delegate
 @property (weak, nonatomic) id <ImageToHitDelegate> delegate;
 
