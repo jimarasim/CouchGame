@@ -7,6 +7,7 @@
 //
 
 #import "CouchViewController.h"
+#import "GameOverViewController.h"
 
 @interface CouchViewController ()
 
@@ -29,10 +30,10 @@
     self.lives = 3;
     
     //set the maximum number of objects in the view at once (to limit images to hit)
-    self.maxObjects = 15;
+    self.maxObjects = 20;
     
     //set the timer interval for adding objects to hit (seconds)
-    self.timerIncrement = 1;
+    self.timerIncrement = 0.75;
     
     //create a couch image and scale it down
     // grab the original image
@@ -79,7 +80,16 @@
     int points=15; //default points for the image
     float timerIncrement=0.05; //default speed of the image
     
-    if(self.duration % 5==0)
+    if(self.duration % 10==0)
+    {
+        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
+        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
+                                        scale:(originalCoffeeTable.scale * 3.0)
+                                  orientation:(originalCoffeeTable.imageOrientation)];
+        points = 125;
+        timerIncrement=0.007;
+    }
+    else if(self.duration % 5==0)
     {
         UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
         targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
@@ -182,6 +192,16 @@
     
     //call the game over segue
     [self performSegueWithIdentifier: @"GameOverSegue" sender: self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"GameOverSegue"])
+    {
+        NSLog(@"prepareForSegue");
+        GameOverViewController *vc = [segue destinationViewController];
+        vc.score = self.nScore;
+    }
 }
 
 - (void)didReceiveMemoryWarning

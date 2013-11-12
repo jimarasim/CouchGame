@@ -52,7 +52,7 @@
         [self.checkPositionTimer invalidate];
         
         //decrement the score because this bullet didn't hit anything
-        [self.delegate AdjustScore:-3];
+        [self.delegate AdjustScore:-5];
         
         //remove from view
         [self removeFromSuperview];

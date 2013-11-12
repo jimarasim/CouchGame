@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
+		E21428FC1832801C00706067 /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21428FB1832801C00706067 /* GameOverViewController.m */; };
 		E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */ = {isa = PBXBuildFile; fileRef = E2732AED18300BCD00F214A2 /* coffeetable.png */; };
 		E2798FD318179C7600BC853F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD218179C7600BC853F /* Foundation.framework */; };
 		E2798FD518179C7600BC853F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD418179C7600BC853F /* CoreGraphics.framework */; };
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
+		E21428FA1832801C00706067 /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		E21428FB1832801C00706067 /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 		E2732AED18300BCD00F214A2 /* coffeetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffeetable.png; sourceTree = "<group>"; };
 		E2798FCF18179C7600BC853F /* CouchGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouchGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2798FD218179C7600BC853F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,8 @@
 				E2EBBBE71825AC410094BF5B /* ImageToShoot.m */,
 				E2FBB0F4182B5A3A00F1A654 /* ImageToHit.h */,
 				E2FBB0F5182B5A3A00F1A654 /* ImageToHit.m */,
+				E21428FA1832801C00706067 /* GameOverViewController.h */,
+				E21428FB1832801C00706067 /* GameOverViewController.m */,
 			);
 			path = CouchGame;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				E2798FE918179C7600BC853F /* CouchViewController.m in Sources */,
 				E2FBB0F6182B5A3A00F1A654 /* ImageToHit.m in Sources */,
 				E2EBBBE81825AC410094BF5B /* ImageToShoot.m in Sources */,
+				E21428FC1832801C00706067 /* GameOverViewController.m in Sources */,
 				E2798FDF18179C7600BC853F /* main.m in Sources */,
 				E2798FE318179C7600BC853F /* CouchAppDelegate.m in Sources */,
 			);
@@ -430,7 +436,7 @@
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -445,7 +451,7 @@
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
