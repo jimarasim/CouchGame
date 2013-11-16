@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
 		E21428FC1832801C00706067 /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21428FB1832801C00706067 /* GameOverViewController.m */; };
+		E24F969C18347FC1004B34D6 /* can.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969B18347FC1004B34D6 /* can.png */; };
+		E24F969E1834877C004B34D6 /* tv.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969D1834877C004B34D6 /* tv.png */; };
 		E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */ = {isa = PBXBuildFile; fileRef = E2732AED18300BCD00F214A2 /* coffeetable.png */; };
 		E2798FD318179C7600BC853F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD218179C7600BC853F /* Foundation.framework */; };
 		E2798FD518179C7600BC853F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD418179C7600BC853F /* CoreGraphics.framework */; };
@@ -48,6 +50,8 @@
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
 		E21428FA1832801C00706067 /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		E21428FB1832801C00706067 /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		E24F969B18347FC1004B34D6 /* can.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = can.png; sourceTree = "<group>"; };
+		E24F969D1834877C004B34D6 /* tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv.png; sourceTree = "<group>"; };
 		E2732AED18300BCD00F214A2 /* coffeetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffeetable.png; sourceTree = "<group>"; };
 		E2798FCF18179C7600BC853F /* CouchGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouchGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2798FD218179C7600BC853F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +169,8 @@
 				E2EBBBE41825AC040094BF5B /* fireshot.png */,
 				E2FBB0F9182B680300F1A654 /* lamp.png */,
 				E2C6DC4D182FB317006E80D7 /* couch1.png */,
+				E24F969B18347FC1004B34D6 /* can.png */,
+				E24F969D1834877C004B34D6 /* tv.png */,
 				E2732AED18300BCD00F214A2 /* coffeetable.png */,
 				E2C6DC4E182FB317006E80D7 /* couch2.png */,
 				E2C6DC4F182FB317006E80D7 /* couch3.png */,
@@ -241,6 +247,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "JAMES K ARASIM";
 				TargetAttributes = {
+					E2798FCE18179C7600BC853F = {
+						DevelopmentTeam = 2PE3H9K6G3;
+					};
 					E2798FEF18179C7600BC853F = {
 						TestTargetID = E2798FCE18179C7600BC853F;
 					};
@@ -270,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24F969C18347FC1004B34D6 /* can.png in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
 				E2798FEB18179C7600BC853F /* Images.xcassets in Resources */,
 				E2C6DC51182FB317006E80D7 /* couch2.png in Resources */,
@@ -280,6 +290,7 @@
 				E2EBBBE51825AC040094BF5B /* fireshot.png in Resources */,
 				E2798FDD18179C7600BC853F /* InfoPlist.strings in Resources */,
 				E2798FE618179C7600BC853F /* Main.storyboard in Resources */,
+				E24F969E1834877C004B34D6 /* tv.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +442,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CouchGame/CouchGame-Prefix.pch";
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -446,11 +461,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CouchGame/CouchGame-Prefix.pch";
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -461,6 +480,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CouchGame.app/CouchGame";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -484,6 +504,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CouchGame.app/CouchGame";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

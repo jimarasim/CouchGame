@@ -48,9 +48,12 @@
 
 - (void)changePosition
 {
-    //if position has gone off the screen
+    //if position has gone off the screen (got past the couch)
     if(self.position.y>self.superview.frame.origin.y+self.superview.frame.size.height)
     {
+        //decrement score by half the points value
+        [self.delegate AdjustScore:-(self.points/3)];
+        
         //put back on top
         [self PlaceImageAtTop];
     }

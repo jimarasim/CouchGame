@@ -15,13 +15,13 @@
 
 @implementation CouchViewController
 
+//called everytime the view comes into play
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
     //initialize the score
-    self.nScore = 0;
+    self.lScore = 0;
     
     //initialize the duration of the game
     self.duration = 0;
@@ -33,27 +33,30 @@
     self.maxObjects = 20;
     
     //set the timer interval for adding objects to hit (seconds)
-    self.timerIncrement = 0.75;
+    self.timerIncrement = 1;
     
-    //create a couch image and scale it down
-    // grab the original image
-    UIImage *originalCouch = [UIImage imageNamed:@"couch.png"];
-    // scaling set to 2.0 makes the image 1/2 the size.
-    UIImage *scaledCouch =[UIImage imageWithCGImage:[originalCouch CGImage]
-                        scale:(originalCouch.scale * 3.0)
-                  orientation:(originalCouch.imageOrientation)];
-    
-    
-    
-    //create the couch and place it in the view
-    self.couch = [[ImageToDrag alloc] initWithImage:scaledCouch];
-    self.couch.center = CGPointMake(self.view.center.x,self.view.center.y);
-    //set this up as the couch's delegate when it wants to shoot
-    self.couch.delegate = self;
-    [self.view addSubview:self.couch];
-
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
+    
+    //create images to hit
+    self.imagesToHitArray = [NSArray arrayWithObjects:
+                             [UIImage imageNamed:@"coffeetable.png"],
+                             [UIImage imageNamed:@"lamp.png"],
+                             [UIImage imageNamed:@"tv.png"],
+                             [UIImage imageNamed:@"can.png"],
+                             nil];
+    
+    //create the couch and place it in the view
+    self.couch = [[ImageToDrag alloc] initWithImage:[UIImage imageNamed:@"couch.png"]];
+    
+    //set this up as the couch's delegate when it wants to shoot
+    self.couch.delegate = self;
+
+    
+    //place the couch in the view (will get removed in EndGame, like all subviews)
+    self.couch.center = CGPointMake(self.view.center.x,self.view.center.y);
+
+    [self.view addSubview:self.couch];
     
     //kick off the timer for objects to hit
     self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
@@ -61,8 +64,6 @@
                                                              selector:@selector(AddAnImageToHit)
                                                              userInfo:nil
                                                               repeats:YES];
-    
-    
 }
 
 -(void)AddAnImageToHit
@@ -76,73 +77,93 @@
         return;
     }
     
-    UIImage *targetImage; //image to drop
     int points=15; //default points for the image
     float timerIncrement=0.05; //default speed of the image
     
-    if(self.duration % 10==0)
+    //set speed and points depending on duration of the game
+    if(self.duration > 200 &&
+       self.duration % 10==0)
     {
-        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
-        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
-                                        scale:(originalCoffeeTable.scale * 3.0)
-                                  orientation:(originalCoffeeTable.imageOrientation)];
-        points = 125;
-        timerIncrement=0.007;
+        points = 175;
+        timerIncrement=0.006;
     }
-    else if(self.duration % 5==0)
+    else if(self.duration > 150 &&
+       self.duration % 8==0)
     {
-        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
-        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
-                                        scale:(originalCoffeeTable.scale * 3.0)
-                                  orientation:(originalCoffeeTable.imageOrientation)];
-        points = 100;
+        points = 150;
+        timerIncrement=0.008;
+    }
+    else if(self.duration > 100 &&
+       self.duration % 7==0)
+    {
+        points = 125;
         timerIncrement=0.01;
     }
-    else if(self.duration % 2==0)
+    else if(self.duration > 75 &&
+            self.duration % 5==0)
     {
-        UIImage *originalCoffeeTable = [UIImage imageNamed:@"coffeetable.png"];
-        targetImage=[UIImage imageWithCGImage:[originalCoffeeTable CGImage]
-                                        scale:(originalCoffeeTable.scale * 3.0)
-                                  orientation:(originalCoffeeTable.imageOrientation)];
-        points = 50;
+        points = 105;
+        timerIncrement=0.015;
+    }
+    else if(self.duration > 50 &&
+            self.duration % 3==0)
+    {
+        points = 75;
+        timerIncrement=0.02;
+    }
+    else if(self.duration > 25 &&
+            self.duration % 2==0)
+    {
+        points = 55;
         timerIncrement=0.03;
     }
     else
     {
-        // grab the original image
-        UIImage *originalLamp = [UIImage imageNamed:@"lamp.png"];
-        // scaling set to 2.0 makes the image 1/2 the size.
-        targetImage=[UIImage imageWithCGImage:[originalLamp CGImage]
-                                         scale:(originalLamp.scale * 2.0)
-                                   orientation:(originalLamp.imageOrientation)];
-        
+        points=15;
+        timerIncrement=0.05;
     }
     
+    //number of images to shoot (double for every 200 images that get dropped)
+    int imagesToShoot=1;
+    if(self.duration > 200)
+    {
+        imagesToShoot = self.duration/100;
+    }
     
-    //create a target to shoot
-    ImageToHit *target = [[ImageToHit alloc] initWithImage:targetImage withTimerIncrement:timerIncrement];
+    //var for random image index
+    int randomImage = 0;
+    for(int i=0;i<imagesToShoot;i++)
+    {
+        
+        //pick a random image as the image to drop
+        randomImage = arc4random() % [self.imagesToHitArray count];
+        
+        //create a target to shoot
+        ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImage] withTimerIncrement:timerIncrement];
     
-    //set the targets point value
-    target.points = points;
+        //set the targets point value (use the target difficulty multiplier)
+        target.points = points*randomImage;
     
-    //set the targets speed
-    target.timerIncrement = timerIncrement;
+        //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
+        target.delegate=self;
     
-    //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
-    target.delegate=self;
+        //add the target to the view
+        [self.view addSubview:target];
+        
     
-    //add the target to the view
-    [self.view addSubview:target];
+        //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
+        [target PlaceImageAtTop];
     
-    //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
-    [target PlaceImageAtTop];
+        
+        target=nil;
+    }
 }
 
 //required as an ImageToHit and ImageToShoot and ImageToDrag delegate
 -(void)AdjustScore:(int)points
 {
-    self.nScore += points;
-    self.score.text =[NSString stringWithFormat:@"%d", self.nScore];
+    self.lScore += points;
+    self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
 }
 
 //required by ImageToDrag delegate for firing bullets
@@ -161,6 +182,10 @@
     
     [self.view addSubview:fireBulletLeft];
     [self.view addSubview:fireBulletRight];
+    
+    fireBulletLeft=nil;
+    fireBulletRight=nil;
+   
 }
 
 //required by ImageToDrag delegate for losing lives (can be called to add lives too)
@@ -183,7 +208,23 @@
     NSArray *subviews = [self.view subviews];
     for (UIView *subview in subviews)
     {
-        [subview removeFromSuperview];
+        //remove all views, but DONT REMOVE THE COUCH
+        if(![subview isKindOfClass:[ImageToDrag class]])
+        {
+            [subview removeFromSuperview];
+        }
+        
+        //stop timers
+        if([subview isKindOfClass:[ImageToHit class]])
+        {
+            [((ImageToHit*)subview).checkPositionTimer invalidate];
+        }
+        
+        if([subview isKindOfClass:[ImageToShoot class]])
+        {
+            [((ImageToShoot*)subview).checkPositionTimer invalidate];
+        }
+        
     }
     
     //stop the game timer
@@ -198,9 +239,8 @@
 {
     if ([[segue identifier] isEqualToString:@"GameOverSegue"])
     {
-        NSLog(@"prepareForSegue");
         GameOverViewController *vc = [segue destinationViewController];
-        vc.score = self.nScore;
+        vc.score = self.lScore;
     }
 }
 
@@ -208,6 +248,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSLog(@"MEMORY WARNING");
 }
 
 

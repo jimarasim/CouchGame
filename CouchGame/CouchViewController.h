@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *score; //label for showing score
 
-@property int nScore; //model object for keeping track of score
+@property long lScore; //model object for keeping track of score
 
 @property ImageToDrag * couch;
 
@@ -32,6 +32,9 @@
 @property int duration; //for keeping track of how long the game has gone
 
 @property int lives; //for keeping track of couch lives
+
+//array of images to hit
+@property NSArray * imagesToHitArray;
 
 -(void)AddAnImageToHit; //for adding objects to hit to the main view
 

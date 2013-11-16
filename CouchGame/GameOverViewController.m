@@ -29,7 +29,7 @@
 	// Do any additional setup after loading the view.
     
     //self.score is set in prepareforsegue of previous view
-    self.ScoreLabel.text = [NSString stringWithFormat:@"%d", self.score];
+    self.ScoreLabel.text = [NSString stringWithFormat:@"%li", self.score];
 }
 
 - (void)didReceiveMemoryWarning
