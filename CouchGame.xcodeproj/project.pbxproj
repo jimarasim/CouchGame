@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
-		E21428FC1832801C00706067 /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21428FB1832801C00706067 /* GameOverViewController.m */; };
+		E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23676AB1838145500A60E5F /* StartGameViewController.m */; };
 		E24F969C18347FC1004B34D6 /* can.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969B18347FC1004B34D6 /* can.png */; };
 		E24F969E1834877C004B34D6 /* tv.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969D1834877C004B34D6 /* tv.png */; };
 		E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */ = {isa = PBXBuildFile; fileRef = E2732AED18300BCD00F214A2 /* coffeetable.png */; };
@@ -48,8 +48,8 @@
 
 /* Begin PBXFileReference section */
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
-		E21428FA1832801C00706067 /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
-		E21428FB1832801C00706067 /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		E23676AA1838145500A60E5F /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
+		E23676AB1838145500A60E5F /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
 		E24F969B18347FC1004B34D6 /* can.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = can.png; sourceTree = "<group>"; };
 		E24F969D1834877C004B34D6 /* tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv.png; sourceTree = "<group>"; };
 		E2732AED18300BCD00F214A2 /* coffeetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffeetable.png; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 				E2EBBBE71825AC410094BF5B /* ImageToShoot.m */,
 				E2FBB0F4182B5A3A00F1A654 /* ImageToHit.h */,
 				E2FBB0F5182B5A3A00F1A654 /* ImageToHit.m */,
-				E21428FA1832801C00706067 /* GameOverViewController.h */,
-				E21428FB1832801C00706067 /* GameOverViewController.m */,
+				E23676AA1838145500A60E5F /* StartGameViewController.h */,
+				E23676AB1838145500A60E5F /* StartGameViewController.m */,
 			);
 			path = CouchGame;
 			sourceTree = "<group>";
@@ -312,8 +312,8 @@
 				E2E01F6618209F2C0016344B /* ImageToDrag.m in Sources */,
 				E2798FE918179C7600BC853F /* CouchViewController.m in Sources */,
 				E2FBB0F6182B5A3A00F1A654 /* ImageToHit.m in Sources */,
+				E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */,
 				E2EBBBE81825AC410094BF5B /* ImageToShoot.m in Sources */,
-				E21428FC1832801C00706067 /* GameOverViewController.m in Sources */,
 				E2798FDF18179C7600BC853F /* main.m in Sources */,
 				E2798FE318179C7600BC853F /* CouchAppDelegate.m in Sources */,
 			);

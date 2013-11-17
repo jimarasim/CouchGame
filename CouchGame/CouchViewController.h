@@ -15,6 +15,7 @@
 //note, this is a delegate for ImageToHit (see ImageToHit.h for delegate definition)
 @interface CouchViewController : UIViewController <ImageToHitDelegate,ImageToShootDelegate,ImageToDragDelegate>
 
+//weak means this will not hold a reference to the object
 @property (weak, nonatomic) IBOutlet UILabel *score; //label for showing score
 
 @property long lScore; //model object for keeping track of score
@@ -23,7 +24,7 @@
 
 @property NSTimer * addTargetTimer; //timer for dropping objects to hit
 
-@property UIImage * fireBullet; //image to use for fire bullets
+@property  UIImage * fireBullet; //image to use for fire bullets
 
 @property float timerIncrement; //how long to wait between dropping objects to hit
 
@@ -34,7 +35,7 @@
 @property int lives; //for keeping track of couch lives
 
 //array of images to hit
-@property NSArray * imagesToHitArray;
+@property  NSArray * imagesToHitArray;
 
 -(void)AddAnImageToHit; //for adding objects to hit to the main view
 

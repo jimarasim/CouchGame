@@ -7,7 +7,7 @@
 //
 
 #import "CouchViewController.h"
-#import "GameOverViewController.h"
+#import "StartGameViewController.h"
 
 @interface CouchViewController ()
 
@@ -208,11 +208,6 @@
     NSArray *subviews = [self.view subviews];
     for (UIView *subview in subviews)
     {
-        //remove all views, but DONT REMOVE THE COUCH
-        if(![subview isKindOfClass:[ImageToDrag class]])
-        {
-            [subview removeFromSuperview];
-        }
         
         //stop timers
         if([subview isKindOfClass:[ImageToHit class]])
@@ -225,25 +220,27 @@
             [((ImageToShoot*)subview).checkPositionTimer invalidate];
         }
         
+        //remove view
+        [subview removeFromSuperview];
     }
     
     //stop the game timer
     [self.addTargetTimer invalidate];
     
+    //free allocated resources
+    self.fireBullet = nil;
+    self.imagesToHitArray = nil;
+    self.couch = nil;
     
-    //call the game over segue
-    [self performSegueWithIdentifier: @"GameOverSegue" sender: self];
+    //access the previous view controller, and set the score
+    NSUInteger nViewControllers = self.navigationController.viewControllers.count;
+    [(StartGameViewController*)[self.navigationController.viewControllers objectAtIndex:nViewControllers-2] setScore:self.lScore];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"GameOverSegue"])
-    {
-        GameOverViewController *vc = [segue destinationViewController];
-        vc.score = self.lScore;
-    }
-}
-
+ 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
