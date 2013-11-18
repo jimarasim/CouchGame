@@ -114,12 +114,12 @@
     else if(self.duration > 25 &&
             self.duration % 2==0)
     {
-        points = 55;
+        points = 60;
         timerIncrement=0.03;
     }
     else
     {
-        points=15;
+        points=50;
         timerIncrement=0.05;
     }
     
@@ -136,13 +136,14 @@
     {
         
         //pick a random image as the image to drop
-        randomImage = arc4random() % [self.imagesToHitArray count];
+        //randomImage = arc4random() % [self.imagesToHitArray count];
+        randomImage = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
         
         //create a target to shoot
         ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImage] withTimerIncrement:timerIncrement];
     
         //set the targets point value (use the target difficulty multiplier)
-        target.points = points*randomImage;
+        target.points = points*(randomImage+1);
     
         //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
         target.delegate=self;
@@ -213,11 +214,13 @@
         if([subview isKindOfClass:[ImageToHit class]])
         {
             [((ImageToHit*)subview).checkPositionTimer invalidate];
+            ((ImageToHit*)subview).checkPositionTimer=nil;
         }
         
         if([subview isKindOfClass:[ImageToShoot class]])
         {
             [((ImageToShoot*)subview).checkPositionTimer invalidate];
+            ((ImageToShoot*)subview).checkPositionTimer=nil;
         }
         
         //remove view
@@ -226,16 +229,18 @@
     
     //stop the game timer
     [self.addTargetTimer invalidate];
+    self.addTargetTimer=nil;
     
     //free allocated resources
     self.fireBullet = nil;
     self.imagesToHitArray = nil;
     self.couch = nil;
     
-    //access the previous view controller, and set the score
+    //access the previous view controller (start game), and set the score
     NSUInteger nViewControllers = self.navigationController.viewControllers.count;
     [(StartGameViewController*)[self.navigationController.viewControllers objectAtIndex:nViewControllers-2] setScore:self.lScore];
     
+    //go back to start game controller
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -246,7 +251,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    NSLog(@"MEMORY WARNING");
+    [self EndGame];
 }
 
 

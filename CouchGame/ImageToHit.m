@@ -52,7 +52,7 @@
     if(self.position.y>self.superview.frame.origin.y+self.superview.frame.size.height)
     {
         //decrement score by half the points value
-        [self.delegate AdjustScore:-(self.points/3)];
+        [self.delegate AdjustScore:-(self.points/2)];
         
         //put back on top
         [self PlaceImageAtTop];
@@ -127,7 +127,8 @@
     //generate a random x position
     int xmax = abs((int)self.superview.frame.size.width-self.frame.size.width);
     
-    int randomx = arc4random() % xmax;
+    //int randomx = arc4random() % xmax;
+    int randomx = (int)arc4random_uniform(xmax);
     
     //place image at random x position at the top of the superview
     [self setPosition:CGPointMake((float)randomx, self.superview.frame.origin.y-self.frame.size.height)];
