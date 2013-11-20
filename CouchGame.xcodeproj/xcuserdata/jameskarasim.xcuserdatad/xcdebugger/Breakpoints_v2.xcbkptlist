@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CouchGame/ImageToHit.m"
-            timestampString = "406422756.359782"
+            timestampString = "406563205.062626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-PlaceImageAtTop"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CouchGame/CouchViewController.m"
-            timestampString = "406422756.359782"
+            timestampString = "406600284.815443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-EndGame"
             landmarkType = "5">
          </BreakpointContent>

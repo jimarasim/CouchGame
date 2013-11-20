@@ -67,7 +67,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="225" translatesAutoresizingMaskIntoConstraints="NO" id="hbA-Jn-8qr">
                                 <rect key="frame" x="62" y="96" width="225" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Move the couch with your finger, and tap to shoot fire bullets at falling objects to gain points.  Inaccuracy and stray objects cause loss of points.  Enjoy!</string>
+                                <string key="text">Move the couch with your finger, and tap to shoot fire bullets at falling objects to gain points.  Inaccuracy, stray objects, and death cause loss of points.  Enjoy!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>

@@ -37,4 +37,6 @@
 -(CGPoint) position;
 -(void)setPosition:(CGPoint)position;
 
+-(int)MinimumPosition:(int)chosenPosition;
+
 @end

@@ -15,6 +15,9 @@
 
 @implementation CouchViewController
 
+//array of valid speeds for the images to hit
+float imageToHitSpeeds[]={0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.005};
+
 //called everytime the view comes into play
 - (void)viewDidLoad
 {
@@ -77,87 +80,38 @@
         return;
     }
     
-    int points=15; //default points for the image
-    float timerIncrement=0.05; //default speed of the image
+    //arc4random() % (n - k) + k returns one from k..n-1
     
-    //set speed and points depending on duration of the game
-    if(self.duration > 200 &&
-       self.duration % 10==0)
-    {
-        points = 175;
-        timerIncrement=0.006;
-    }
-    else if(self.duration > 150 &&
-       self.duration % 8==0)
-    {
-        points = 150;
-        timerIncrement=0.008;
-    }
-    else if(self.duration > 100 &&
-       self.duration % 7==0)
-    {
-        points = 125;
-        timerIncrement=0.01;
-    }
-    else if(self.duration > 75 &&
-            self.duration % 5==0)
-    {
-        points = 105;
-        timerIncrement=0.015;
-    }
-    else if(self.duration > 50 &&
-            self.duration % 3==0)
-    {
-        points = 75;
-        timerIncrement=0.02;
-    }
-    else if(self.duration > 25 &&
-            self.duration % 2==0)
-    {
-        points = 60;
-        timerIncrement=0.03;
-    }
-    else
-    {
-        points=50;
-        timerIncrement=0.05;
-    }
+    //pick a random speed from the array of valid speeds for the timer increment
+    int randomSpeedIndex = (int)arc4random_uniform((u_int32_t)sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]));
     
-    //number of images to shoot (double for every 200 images that get dropped)
-    int imagesToShoot=1;
-    if(self.duration > 200)
-    {
-        imagesToShoot = self.duration/100;
-    }
+    float timerIncrement = imageToHitSpeeds[randomSpeedIndex];
     
-    //var for random image index
-    int randomImage = 0;
-    for(int i=0;i<imagesToShoot;i++)
-    {
+    //pick a random image as the image to drop
+    int randomImageIndex = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
+    
+    //pick the points value based on the speed and difficulty of the target
+    int points = (randomImageIndex+1)*(randomSpeedIndex+1)+100;
         
-        //pick a random image as the image to drop
-        //randomImage = arc4random() % [self.imagesToHitArray count];
-        randomImage = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
-        
-        //create a target to shoot
-        ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImage] withTimerIncrement:timerIncrement];
+    //create a target to shoot
+    ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImageIndex] withTimerIncrement:timerIncrement];
     
-        //set the targets point value (use the target difficulty multiplier)
-        target.points = points*(randomImage+1);
+    //set the targets point value (use the target difficulty multiplier)
+    target.points = points;
     
-        //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
-        target.delegate=self;
+    //set this up as the targets delegate for when it's hit, and the score needs to be adjusted
+    target.delegate=self;
     
-        //add the target to the view
-        [self.view addSubview:target];
+    //add the target to the view
+    [self.view addSubview:target];
         
     
-        //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
-        [target PlaceImageAtTop];
+    //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
+    [target PlaceImageAtTop];
     
         
-        target=nil;
-    }
+    target=nil;
+    
 }
 
 //required as an ImageToHit and ImageToShoot and ImageToDrag delegate
