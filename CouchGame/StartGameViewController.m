@@ -14,6 +14,8 @@
 
 @implementation StartGameViewController
 
+long highScore=0;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,7 +33,12 @@
 
 -(void)setScore:(long)score
 {
-    self.ScoreLabel.text = [NSString stringWithFormat:@"%li", score];
+    if(score>highScore)
+    {
+        highScore=score;
+    }
+    
+    self.ScoreLabel.text = [NSString stringWithFormat:@"%li", highScore];
     
 }
 

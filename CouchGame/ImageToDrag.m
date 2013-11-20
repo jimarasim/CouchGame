@@ -42,6 +42,7 @@
     self.animationDuration = 1.0;
     self.animationRepeatCount = 1;
     
+    tapRecognizer=nil;
     
     return self;
 }

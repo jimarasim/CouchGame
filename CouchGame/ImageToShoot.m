@@ -87,6 +87,8 @@
             }
         }
     }
+    
+    subviews=nil;
 
 }
 

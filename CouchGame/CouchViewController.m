@@ -16,7 +16,13 @@
 @implementation CouchViewController
 
 //array of valid speeds for the images to hit
-float imageToHitSpeeds[]={0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.005};
+float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.005};
+
+//number of speeds in the imageToHitSpeeds array, set dynamically in viewDidLoad
+int numberOfSpeeds;
+
+//how many durations to wait until increasing difficulty
+int levelUp = 5;
 
 //called everytime the view comes into play
 - (void)viewDidLoad
@@ -61,6 +67,10 @@ float imageToHitSpeeds[]={0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.0
 
     [self.view addSubview:self.couch];
     
+    
+    //get the number of possible speeds in the speeds array
+    numberOfSpeeds =sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]);
+    
     //kick off the timer for objects to hit
     self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
                                                                target:self
@@ -80,12 +90,31 @@ float imageToHitSpeeds[]={0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.0
         return;
     }
     
-    //arc4random() % (n - k) + k returns one from k..n-1
+    //set available speeds based on duration of the game
+    int randomSpeedIndex;
+    if((self.duration/levelUp)>numberOfSpeeds)
+    {
+        int minimumSpeed = ((self.duration/levelUp)>(numberOfSpeeds*2))?numberOfSpeeds-1:(numberOfSpeeds*2)-(self.duration/levelUp)-1;
+        
+        randomSpeedIndex = (int)arc4random_uniform(numberOfSpeeds);
+        
+        if(randomSpeedIndex<minimumSpeed)
+        {
+            randomSpeedIndex=minimumSpeed;
+        }
+        
+    }
+    else
+    {
+        //every levelUp durations, make another speed available
+        randomSpeedIndex = (int)arc4random_uniform(self.duration/levelUp);
+    }
+    
     
     //pick a random speed from the array of valid speeds for the timer increment
-    int randomSpeedIndex = (int)arc4random_uniform((u_int32_t)sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]));
-    
     float timerIncrement = imageToHitSpeeds[randomSpeedIndex];
+    
+    NSLog(@"DURATION:%d SPEED:%f",self.duration,imageToHitSpeeds[randomSpeedIndex]);
     
     //pick a random image as the image to drop
     int randomImageIndex = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
