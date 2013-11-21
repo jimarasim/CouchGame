@@ -22,7 +22,7 @@ float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.00
 int numberOfSpeeds;
 
 //how many durations to wait until increasing difficulty
-int levelUp = 5;
+int levelUp = 10;
 
 //called everytime the view comes into play
 - (void)viewDidLoad
@@ -94,15 +94,10 @@ int levelUp = 5;
     int randomSpeedIndex;
     if((self.duration/levelUp)>numberOfSpeeds)
     {
-        int minimumSpeed = ((self.duration/levelUp)>(numberOfSpeeds*2))?numberOfSpeeds-1:(numberOfSpeeds*2)-(self.duration/levelUp)-1;
+        //phase out the lower speeds, so that eventually only the highest speed is chosen
+        int minimumSpeed = ((self.duration/levelUp)>=(numberOfSpeeds*2))?numberOfSpeeds-1:(self.duration/levelUp)-numberOfSpeeds;
         
-        randomSpeedIndex = (int)arc4random_uniform(numberOfSpeeds);
-        
-        if(randomSpeedIndex<minimumSpeed)
-        {
-            randomSpeedIndex=minimumSpeed;
-        }
-        
+        randomSpeedIndex=arc4random_uniform((numberOfSpeeds-1) - minimumSpeed + 1) + minimumSpeed;
     }
     else
     {
