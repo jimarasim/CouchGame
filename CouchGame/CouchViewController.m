@@ -109,8 +109,6 @@ int levelUp = 20;
     //pick a random speed from the array of valid speeds for the timer increment
     float timerIncrement = imageToHitSpeeds[randomSpeedIndex];
     
-    NSLog(@"DURATION:%d SPEED:%f",self.duration,imageToHitSpeeds[randomSpeedIndex]);
-    
     //pick a random image as the image to drop
     int randomImageIndex = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
     
@@ -200,9 +198,15 @@ int levelUp = 20;
             [((ImageToShoot*)subview).checkPositionTimer invalidate];
             ((ImageToShoot*)subview).checkPositionTimer=nil;
         }
+
+        if([subview isKindOfClass:[ImageToDrag class]])
+        {
+            ((ImageToDrag*)subview).animationArray=nil;
+        }
         
         //remove view
         [subview removeFromSuperview];
+        
     }
     
     //stop the game timer
@@ -213,6 +217,8 @@ int levelUp = 20;
     self.fireBullet = nil;
     self.imagesToHitArray = nil;
     self.couch = nil;
+    self.score = nil;
+    subviews = nil;
     
     //access the previous view controller (start game), and set the score
     NSUInteger nViewControllers = self.navigationController.viewControllers.count;
