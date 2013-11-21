@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CouchGame/CouchViewController.m"
-            timestampString = "406696905.55066"
+            timestampString = "406697849.10727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-EndGame"
             landmarkType = "5">
          </BreakpointContent>

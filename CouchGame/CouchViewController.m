@@ -22,7 +22,7 @@ float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.00
 int numberOfSpeeds;
 
 //how many durations to wait until increasing difficulty
-int levelUp = 10;
+int levelUp = 20;
 
 //called everytime the view comes into play
 - (void)viewDidLoad
@@ -42,7 +42,7 @@ int levelUp = 10;
     self.maxObjects = 20;
     
     //set the timer interval for adding objects to hit (seconds)
-    self.timerIncrement = 1;
+    self.timerIncrement = 0.5;
     
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
