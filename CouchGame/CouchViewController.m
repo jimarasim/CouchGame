@@ -16,7 +16,7 @@
 @implementation CouchViewController
 
 //array of valid speeds for the images to hit
-float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.009,0.008,0.007,0.006,0.005};
+float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.0095,0.009,0.0085,0.008,0.0075,0.007,0.0065,0.006,0.0055,0.005};
 
 //number of speeds in the imageToHitSpeeds array, set dynamically in viewDidLoad
 int numberOfSpeeds;
@@ -108,6 +108,8 @@ int levelUp = 20;
     
     //pick a random speed from the array of valid speeds for the timer increment
     float timerIncrement = imageToHitSpeeds[randomSpeedIndex];
+    
+    NSLog(@"%d-%f",self.duration,timerIncrement);
     
     //pick a random image as the image to drop
     int randomImageIndex = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
