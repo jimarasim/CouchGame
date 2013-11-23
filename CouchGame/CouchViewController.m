@@ -109,8 +109,6 @@ int levelUp = 20;
     //pick a random speed from the array of valid speeds for the timer increment
     float timerIncrement = imageToHitSpeeds[randomSpeedIndex];
     
-    NSLog(@"%d-%f",self.duration,timerIncrement);
-    
     //pick a random image as the image to drop
     int randomImageIndex = (int)arc4random_uniform((u_int32_t)[self.imagesToHitArray count]);
     
@@ -133,7 +131,6 @@ int levelUp = 20;
     //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
     [target PlaceImageAtTop];
     
-        
     target=nil;
     
 }
