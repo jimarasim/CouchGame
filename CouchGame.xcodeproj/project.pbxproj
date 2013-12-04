@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
 		E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23676AB1838145500A60E5F /* StartGameViewController.m */; };
+		E24CD540184EED99006916E0 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24CD53F184EED99006916E0 /* iPad.storyboard */; };
 		E24F969C18347FC1004B34D6 /* can.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969B18347FC1004B34D6 /* can.png */; };
 		E24F969E1834877C004B34D6 /* tv.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969D1834877C004B34D6 /* tv.png */; };
 		E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */ = {isa = PBXBuildFile; fileRef = E2732AED18300BCD00F214A2 /* coffeetable.png */; };
@@ -51,6 +52,7 @@
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
 		E23676AA1838145500A60E5F /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		E23676AB1838145500A60E5F /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
+		E24CD53F184EED99006916E0 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		E24F969B18347FC1004B34D6 /* can.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = can.png; sourceTree = "<group>"; };
 		E24F969D1834877C004B34D6 /* tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv.png; sourceTree = "<group>"; };
 		E2732AED18300BCD00F214A2 /* coffeetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffeetable.png; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E2798FE118179C7600BC853F /* CouchAppDelegate.h */,
 				E2798FE218179C7600BC853F /* CouchAppDelegate.m */,
 				E2798FE418179C7600BC853F /* Main.storyboard */,
+				E24CD53F184EED99006916E0 /* iPad.storyboard */,
 				E2798FE718179C7600BC853F /* CouchViewController.h */,
 				E2798FE818179C7600BC853F /* CouchViewController.m */,
 				E2798FEA18179C7600BC853F /* Images.xcassets */,
@@ -284,6 +287,7 @@
 			files = (
 				E27D398218458D0100FF7461 /* cat.png in Resources */,
 				E24F969C18347FC1004B34D6 /* can.png in Resources */,
+				E24CD540184EED99006916E0 /* iPad.storyboard in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
 				E2798FEB18179C7600BC853F /* Images.xcassets in Resources */,
 				E2C6DC51182FB317006E80D7 /* couch2.png in Resources */,
