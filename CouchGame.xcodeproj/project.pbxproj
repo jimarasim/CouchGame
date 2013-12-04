@@ -26,6 +26,7 @@
 		E2798FF418179C7600BC853F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2798FD618179C7600BC853F /* UIKit.framework */; };
 		E2798FFC18179C7600BC853F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2798FFA18179C7600BC853F /* InfoPlist.strings */; };
 		E2798FFE18179C7600BC853F /* CouchGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2798FFD18179C7600BC853F /* CouchGameTests.m */; };
+		E27D398218458D0100FF7461 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = E27D398118458D0100FF7461 /* cat.png */; };
 		E2C6DC50182FB317006E80D7 /* couch1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4D182FB317006E80D7 /* couch1.png */; };
 		E2C6DC51182FB317006E80D7 /* couch2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4E182FB317006E80D7 /* couch2.png */; };
 		E2C6DC52182FB317006E80D7 /* couch3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6DC4F182FB317006E80D7 /* couch3.png */; };
@@ -72,6 +73,7 @@
 		E2798FF918179C7600BC853F /* CouchGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CouchGameTests-Info.plist"; sourceTree = "<group>"; };
 		E2798FFB18179C7600BC853F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2798FFD18179C7600BC853F /* CouchGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouchGameTests.m; sourceTree = "<group>"; };
+		E27D398118458D0100FF7461 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
 		E2C6DC4D182FB317006E80D7 /* couch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch1.png; sourceTree = "<group>"; };
 		E2C6DC4E182FB317006E80D7 /* couch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch2.png; sourceTree = "<group>"; };
 		E2C6DC4F182FB317006E80D7 /* couch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch3.png; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				E2EBBBE41825AC040094BF5B /* fireshot.png */,
 				E2FBB0F9182B680300F1A654 /* lamp.png */,
 				E2C6DC4D182FB317006E80D7 /* couch1.png */,
+				E27D398118458D0100FF7461 /* cat.png */,
 				E24F969B18347FC1004B34D6 /* can.png */,
 				E24F969D1834877C004B34D6 /* tv.png */,
 				E2732AED18300BCD00F214A2 /* coffeetable.png */,
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27D398218458D0100FF7461 /* cat.png in Resources */,
 				E24F969C18347FC1004B34D6 /* can.png in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
 				E2798FEB18179C7600BC853F /* Images.xcassets in Resources */,

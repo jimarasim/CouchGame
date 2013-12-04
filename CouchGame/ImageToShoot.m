@@ -52,10 +52,11 @@
         [self.checkPositionTimer invalidate];
         
         //decrement the score because this bullet didn't hit anything
-        [self.delegate AdjustScore:-5];
+        [self.delegate AdjustScore:-25];
         
         //remove from view
         [self removeFromSuperview];
+        
     }
     
     //move the bullet up
@@ -82,6 +83,8 @@
                     
                     //kill the fire
                     [self.checkPositionTimer invalidate];
+                    self.checkPositionTimer=nil;
+                    
                     [self removeFromSuperview];
                 }
             }

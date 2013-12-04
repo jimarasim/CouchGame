@@ -114,6 +114,10 @@ static int lastWidth;
 {
     //stop the timer
     [self.checkPositionTimer invalidate];
+    self.checkPositionTimer=nil;
+    
+    //increment the score
+    [self.delegate AdjustScore:self.points];
     
     //make it disappear
     [UIView animateWithDuration:0.3
@@ -125,8 +129,6 @@ static int lastWidth;
                          [self removeFromSuperview];
                      }];
     
-    //increment the score
-    [self.delegate AdjustScore:self.points];
     
 }
 

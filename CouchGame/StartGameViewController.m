@@ -36,6 +36,11 @@ long highScore=0;
     if(score>highScore)
     {
         highScore=score;
+        self.ScoreMessage.text = @"New High Score!";
+    }
+    else
+    {
+        self.ScoreMessage.text = @"Score to beat:";
     }
     
     self.ScoreLabel.text = [NSString stringWithFormat:@"%li", highScore];

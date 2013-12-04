@@ -58,14 +58,14 @@
                                     <segue destination="vXZ-lx-hvc" kind="push" id="8KE-Ed-Yka"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couch Game!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-Bv-zmI">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Couch Game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-Bv-zmI">
                                 <rect key="frame" x="100" y="103" width="123" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="225" translatesAutoresizingMaskIntoConstraints="NO" id="hbA-Jn-8qr">
-                                <rect key="frame" x="49" y="114" width="225" height="129"/>
+                                <rect key="frame" x="49" y="127" width="225" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Move the couch with your finger, and tap to shoot fire bullets at falling objects to gain points.  Inaccuracy, stray objects, and death cause loss of points.  Enjoy!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -84,8 +84,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-dx-h5l">
-                                <rect key="frame" x="108" y="363" width="91" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-dx-h5l">
+                                <rect key="frame" x="20" y="363" width="275" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -96,8 +96,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vmm-jd-RQV"/>
                     <connections>
+                        <outlet property="InstructionsLabel" destination="hbA-Jn-8qr" id="Npl-1u-Ogu"/>
                         <outlet property="ScoreLabel" destination="BQM-Kj-bMB" id="C2D-JL-NGF"/>
+                        <outlet property="ScoreMessage" destination="F4M-dx-h5l" id="ix5-Ea-aHE"/>
                         <outlet property="StartGameButton" destination="Eb3-e8-p5l" id="EY4-8m-1p6"/>
+                        <outlet property="TitleLabel" destination="pbx-Bv-zmI" id="5uj-Oa-dCb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLW-sa-Evc" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -24,6 +24,7 @@ int numberOfSpeeds;
 //how many durations to wait until increasing difficulty
 int levelUp = 20;
 
+
 //called everytime the view comes into play
 - (void)viewDidLoad
 {
@@ -47,29 +48,20 @@ int levelUp = 20;
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
     
+    
     //create images to hit
     self.imagesToHitArray = [NSArray arrayWithObjects:
                              [UIImage imageNamed:@"coffeetable.png"],
+                             [UIImage imageNamed:@"cat.png"],
                              [UIImage imageNamed:@"lamp.png"],
                              [UIImage imageNamed:@"tv.png"],
                              [UIImage imageNamed:@"can.png"],
                              nil];
     
-    //create the couch and place it in the view
-    self.couch = [[ImageToDrag alloc] initWithImage:[UIImage imageNamed:@"couch.png"]];
-    
-    //set this up as the couch's delegate when it wants to shoot
-    self.couch.delegate = self;
-
-    
-    //place the couch in the view (will get removed in EndGame, like all subviews)
-    self.couch.center = CGPointMake(self.view.center.x,self.view.center.y);
-
-    [self.view addSubview:self.couch];
-    
-    
     //get the number of possible speeds in the speeds array
     numberOfSpeeds =sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]);
+    
+    [self CreateCouch];
     
     //kick off the timer for objects to hit
     self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
@@ -78,6 +70,22 @@ int levelUp = 20;
                                                              userInfo:nil
                                                               repeats:YES];
 }
+
+-(void)CreateCouch
+{
+    //create the couch and place it in the view
+    self.couch = [[ImageToDrag alloc] initWithImage:[UIImage imageNamed:@"couch.png"]];
+    
+    //set this up as the couch's delegate when it wants to shoot
+    self.couch.delegate = self;
+    
+    
+    //place the couch in the view (will get removed in EndGame, like all subviews)
+    self.couch.center = CGPointMake(self.view.center.x,self.view.center.y);
+    
+    [self.view addSubview:self.couch];
+}
+
 
 -(void)AddAnImageToHit
 {
@@ -145,9 +153,11 @@ int levelUp = 20;
 //required by ImageToDrag delegate for firing bullets
 -(void)Fire
 {
+    
     //create a fire bullets. bullets will remove themselves from the view when its position is less than 0
     ImageToShoot *fireBulletLeft = [[ImageToShoot alloc] initWithImage:self.fireBullet];
     ImageToShoot *fireBulletRight = [[ImageToShoot alloc] initWithImage:self.fireBullet];
+    
     
     fireBulletLeft.center = CGPointMake(self.couch.center.x-(self.couch.frame.size.width/2)+fireBulletLeft.frame.size.width, self.couch.center.y);
     fireBulletRight.center = CGPointMake(self.couch.center.x+(self.couch.frame.size.width/2)-fireBulletRight.frame.size.width, self.couch.center.y);
@@ -159,9 +169,10 @@ int levelUp = 20;
     [self.view addSubview:fireBulletLeft];
     [self.view addSubview:fireBulletRight];
     
+    
     fireBulletLeft=nil;
     fireBulletRight=nil;
-   
+    
 }
 
 //required by ImageToDrag delegate for losing lives (can be called to add lives too)
