@@ -50,12 +50,14 @@ int levelUp = 20;
     
     
     //create images to hit
+    
     self.imagesToHitArray = [NSArray arrayWithObjects:
                              [UIImage imageNamed:@"coffeetable.png"],
                              [UIImage imageNamed:@"cat.png"],
                              [UIImage imageNamed:@"lamp.png"],
                              [UIImage imageNamed:@"tv.png"],
                              [UIImage imageNamed:@"can.png"],
+                             [UIImage imageNamed:@"candy.jpeg"],
                              nil];
     
     //get the number of possible speeds in the speeds array

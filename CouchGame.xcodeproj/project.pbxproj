@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
+		E21D84671855719300C54EA0 /* candy.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21D84661855719300C54EA0 /* candy.jpeg */; };
 		E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23676AB1838145500A60E5F /* StartGameViewController.m */; };
 		E24CD540184EED99006916E0 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24CD53F184EED99006916E0 /* iPad.storyboard */; };
 		E24F969C18347FC1004B34D6 /* can.png in Resources */ = {isa = PBXBuildFile; fileRef = E24F969B18347FC1004B34D6 /* can.png */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
+		E21D84661855719300C54EA0 /* candy.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candy.jpeg; sourceTree = "<group>"; };
 		E23676AA1838145500A60E5F /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		E23676AB1838145500A60E5F /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
 		E24CD53F184EED99006916E0 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				E2FBB0F9182B680300F1A654 /* lamp.png */,
 				E2C6DC4D182FB317006E80D7 /* couch1.png */,
 				E27D398118458D0100FF7461 /* cat.png */,
+				E21D84661855719300C54EA0 /* candy.jpeg */,
 				E24F969B18347FC1004B34D6 /* can.png */,
 				E24F969D1834877C004B34D6 /* tv.png */,
 				E2732AED18300BCD00F214A2 /* coffeetable.png */,
@@ -298,6 +301,7 @@
 				E2EBBBE51825AC040094BF5B /* fireshot.png in Resources */,
 				E2798FDD18179C7600BC853F /* InfoPlist.strings in Resources */,
 				E2798FE618179C7600BC853F /* Main.storyboard in Resources */,
+				E21D84671855719300C54EA0 /* candy.jpeg in Resources */,
 				E24F969E1834877C004B34D6 /* tv.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +460,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CouchGame/CouchGame-Prefix.pch";
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,7 +479,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CouchGame/CouchGame-Prefix.pch";
 				INFOPLIST_FILE = "CouchGame/CouchGame-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
