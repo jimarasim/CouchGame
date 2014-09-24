@@ -63,6 +63,10 @@ int levelUp = 20;
     //get the number of possible speeds in the speeds array
     numberOfSpeeds =sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]);
     
+    //set the background image
+    [self SetBackgroundImage];
+    
+    //put the couch on the board
     [self CreateCouch];
     
     //kick off the timer for objects to hit
@@ -71,6 +75,15 @@ int levelUp = 20;
                                                              selector:@selector(AddAnImageToHit)
                                                              userInfo:nil
                                                               repeats:YES];
+}
+
+-(void)SetBackgroundImage{
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tv.png"]];
+    
+    backgroundImage.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    
+    [self.view addSubview:backgroundImage];
+    
 }
 
 -(void)CreateCouch
