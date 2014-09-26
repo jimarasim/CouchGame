@@ -58,13 +58,14 @@ int levelUp = 20;
                              [UIImage imageNamed:@"tv.png"],
                              [UIImage imageNamed:@"can.png"],
                              [UIImage imageNamed:@"candy.jpeg"],
+                             [UIImage imageNamed:@"dog.png"],
                              nil];
     
     //get the number of possible speeds in the speeds array
     numberOfSpeeds =sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]);
     
     //set the background image
-    [self SetBackgroundImage];
+    [self SetBackgroundImage:@"space.jpg"];
     
     //put the couch on the board
     [self CreateCouch];
@@ -77,10 +78,11 @@ int levelUp = 20;
                                                               repeats:YES];
 }
 
--(void)SetBackgroundImage{
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tv.png"]];
+-(void)SetBackgroundImage:(NSString*)imageName{
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     
     backgroundImage.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    printf("%f, %f",self.view.frame.size.width,self.view.frame.size.height);
     
     [self.view addSubview:backgroundImage];
     

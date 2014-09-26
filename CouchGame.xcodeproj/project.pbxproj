@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9C19D5AD5900309FBA /* space.jpg */; };
+		E1D2FF9F19D5AF5300309FBA /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9E19D5AF5300309FBA /* dog.png */; };
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
 		E21D84671855719300C54EA0 /* candy.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21D84661855719300C54EA0 /* candy.jpeg */; };
 		E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23676AB1838145500A60E5F /* StartGameViewController.m */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E1D2FF9C19D5AD5900309FBA /* space.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space.jpg; sourceTree = "<group>"; };
+		E1D2FF9E19D5AF5300309FBA /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
 		E21D84661855719300C54EA0 /* candy.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candy.jpeg; sourceTree = "<group>"; };
 		E23676AA1838145500A60E5F /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		E2798FD918179C7600BC853F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1D2FF9E19D5AF5300309FBA /* dog.png */,
+				E1D2FF9C19D5AD5900309FBA /* space.jpg */,
 				E2798FDA18179C7600BC853F /* CouchGame-Info.plist */,
 				E2798FDB18179C7600BC853F /* InfoPlist.strings */,
 				E2EBBBE41825AC040094BF5B /* fireshot.png */,
@@ -292,12 +298,14 @@
 				E24F969C18347FC1004B34D6 /* can.png in Resources */,
 				E24CD540184EED99006916E0 /* iPad.storyboard in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
+				E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */,
 				E2798FEB18179C7600BC853F /* Images.xcassets in Resources */,
 				E2C6DC51182FB317006E80D7 /* couch2.png in Resources */,
 				E2C6DC52182FB317006E80D7 /* couch3.png in Resources */,
 				E2C6DC50182FB317006E80D7 /* couch1.png in Resources */,
 				E2FBB0FA182B680300F1A654 /* lamp.png in Resources */,
 				E20230C518221E1B00FFCAD8 /* couch.png in Resources */,
+				E1D2FF9F19D5AF5300309FBA /* dog.png in Resources */,
 				E2EBBBE51825AC040094BF5B /* fireshot.png in Resources */,
 				E2798FDD18179C7600BC853F /* InfoPlist.strings in Resources */,
 				E2798FE618179C7600BC853F /* Main.storyboard in Resources */,

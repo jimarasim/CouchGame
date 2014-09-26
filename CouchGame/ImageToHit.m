@@ -17,17 +17,6 @@ static int lastXposition = 0;
 //track what last width was, to guarantee safe distance
 static int lastWidth;
 
-/*
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-*/
-
 //when initializing with the image, make this imageview available to user interaction
 - (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc
 {
@@ -143,7 +132,6 @@ static int lastWidth;
     
     //make sure position is a minimum distance
     int finalPosition = [self MinimumPosition:randomx];
-    
     
     //set where x was last positioned
     lastXposition = finalPosition;
