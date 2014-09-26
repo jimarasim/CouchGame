@@ -34,6 +34,9 @@
 
 @property int lives; //for keeping track of couch lives
 
+//array of filenames of images to hit
+@property  NSArray * imagesToHitFileNameArray;
+
 //array of images to hit
 @property  NSArray * imagesToHitArray;
 

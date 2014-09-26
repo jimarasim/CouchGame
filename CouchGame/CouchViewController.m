@@ -24,7 +24,6 @@ int numberOfSpeeds;
 //how many durations to wait until increasing difficulty
 int levelUp = 20;
 
-
 //called everytime the view comes into play
 - (void)viewDidLoad
 {
@@ -48,17 +47,27 @@ int levelUp = 20;
     //create the fire bullet image to use for all fire bullets
     self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
     
+    //create filename array for images to hit
+    self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
+                                     @"coffeetable.png",
+                                     @"cat.png",
+                                     @"lamp.png",
+                                     @"tv.png",
+                                     @"can.png",
+                                     @"candy.jpeg",
+                                     @"dog.png",
+                                     nil];
     
-    //create images to hit
-    
+    //create images to hit.  must be ordered same as self.imagesToHitFileNameArray, so we
+    //can tell what image filename is being used, when playing sounds for it
     self.imagesToHitArray = [NSArray arrayWithObjects:
-                             [UIImage imageNamed:@"coffeetable.png"],
-                             [UIImage imageNamed:@"cat.png"],
-                             [UIImage imageNamed:@"lamp.png"],
-                             [UIImage imageNamed:@"tv.png"],
-                             [UIImage imageNamed:@"can.png"],
-                             [UIImage imageNamed:@"candy.jpeg"],
-                             [UIImage imageNamed:@"dog.png"],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[0]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[1]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[2]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[3]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[4]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[5]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[6]],
                              nil];
     
     //get the number of possible speeds in the speeds array
@@ -142,6 +151,9 @@ int levelUp = 20;
         
     //create a target to shoot
     ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImageIndex] withTimerIncrement:timerIncrement];
+    
+    //let target know what image it's showing, so it knows what sound to play when it's hit
+    target.imageAlias = self.imagesToHitFileNameArray[randomImageIndex];
     
     //set the targets point value (use the target difficulty multiplier)
     target.points = points;

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9C19D5AD5900309FBA /* space.jpg */; };
 		E1D2FF9F19D5AF5300309FBA /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9E19D5AF5300309FBA /* dog.png */; };
+		E1F960A419D6087F00C89B25 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F960A319D6087F00C89B25 /* AVFoundation.framework */; };
+		E1F960A619D6092400C89B25 /* meow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1F960A519D6092400C89B25 /* meow.mp3 */; };
 		E20230C518221E1B00FFCAD8 /* couch.png in Resources */ = {isa = PBXBuildFile; fileRef = E20230C418221E1B00FFCAD8 /* couch.png */; };
 		E21D84671855719300C54EA0 /* candy.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E21D84661855719300C54EA0 /* candy.jpeg */; };
 		E23676AC1838145500A60E5F /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23676AB1838145500A60E5F /* StartGameViewController.m */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		E1D2FF9C19D5AD5900309FBA /* space.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space.jpg; sourceTree = "<group>"; };
 		E1D2FF9E19D5AF5300309FBA /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
+		E1F960A319D6087F00C89B25 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E1F960A519D6092400C89B25 /* meow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow.mp3; sourceTree = "<group>"; };
 		E20230C418221E1B00FFCAD8 /* couch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = couch.png; sourceTree = "<group>"; };
 		E21D84661855719300C54EA0 /* candy.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candy.jpeg; sourceTree = "<group>"; };
 		E23676AA1838145500A60E5F /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F960A419D6087F00C89B25 /* AVFoundation.framework in Frameworks */,
 				E2798FD518179C7600BC853F /* CoreGraphics.framework in Frameworks */,
 				E2798FD718179C7600BC853F /* UIKit.framework in Frameworks */,
 				E2798FD318179C7600BC853F /* Foundation.framework in Frameworks */,
@@ -141,6 +146,7 @@
 		E2798FD118179C7600BC853F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1F960A319D6087F00C89B25 /* AVFoundation.framework */,
 				E2798FD218179C7600BC853F /* Foundation.framework */,
 				E2798FD418179C7600BC853F /* CoreGraphics.framework */,
 				E2798FD618179C7600BC853F /* UIKit.framework */,
@@ -175,6 +181,7 @@
 		E2798FD918179C7600BC853F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1F960A519D6092400C89B25 /* meow.mp3 */,
 				E1D2FF9E19D5AF5300309FBA /* dog.png */,
 				E1D2FF9C19D5AD5900309FBA /* space.jpg */,
 				E2798FDA18179C7600BC853F /* CouchGame-Info.plist */,
@@ -296,6 +303,7 @@
 			files = (
 				E27D398218458D0100FF7461 /* cat.png in Resources */,
 				E24F969C18347FC1004B34D6 /* can.png in Resources */,
+				E1F960A619D6092400C89B25 /* meow.mp3 in Resources */,
 				E24CD540184EED99006916E0 /* iPad.storyboard in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
 				E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */,

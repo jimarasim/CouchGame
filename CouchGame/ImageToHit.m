@@ -17,6 +17,7 @@ static int lastXposition = 0;
 //track what last width was, to guarantee safe distance
 static int lastWidth;
 
+
 //when initializing with the image, make this imageview available to user interaction
 - (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc
 {
@@ -38,6 +39,7 @@ static int lastWidth;
                                                              selector:@selector(changePosition)
                                                              userInfo:nil
                                                               repeats:YES];
+    
     
     return self;
 }
@@ -117,6 +119,10 @@ static int lastWidth;
                          //remove from view
                          [self removeFromSuperview];
                      }];
+    //play a sound
+    if([self.imageAlias compare:@"cat.png"]){
+        NSLog(@"image alias:%@",self.imageAlias);
+    }
     
     
 }

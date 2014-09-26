@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CouchGame/CouchViewController.m"
-            timestampString = "433434338.283651"
+            timestampString = "433462203.439692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-SetBackgroundImage:"
             landmarkType = "5">
          </BreakpointContent>

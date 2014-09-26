@@ -30,6 +30,8 @@
 
 @property int points;
 
+@property NSString * imageAlias;
+
 -(void)PlaceImageAtTop;
 
 -(void)HitImage;
