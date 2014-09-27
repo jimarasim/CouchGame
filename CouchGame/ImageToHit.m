@@ -120,7 +120,7 @@ static int lastWidth;
                          [self removeFromSuperview];
                      }];
     //play a sound
-    if([self.imageAlias compare:@"cat.png"]){
+    if([self.imageAlias isEqualToString:@"cat.png"]){
         NSLog(@"image alias:%@",self.imageAlias);
     }
     
