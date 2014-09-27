@@ -19,9 +19,12 @@ static int lastWidth;
 
 
 //when initializing with the image, make this imageview available to user interaction
-- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc
+- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc withImageAlias:(NSString*)imageAliasParm;
 {
     self = [super initWithImage:image];
+    
+    //set our image alias, so we know what noise to play when this is hit
+    self.imageAlias = imageAliasParm;
     
     //set the timer interval
     self.timerIncrement = tinc;

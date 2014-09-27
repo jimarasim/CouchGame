@@ -150,11 +150,10 @@ int levelUp = 20;
     int points = (randomImageIndex+1)*(randomSpeedIndex+1)+100;
         
     //create a target to shoot
-    ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImageIndex] withTimerIncrement:timerIncrement];
-    
-    //let target know what image it's showing, so it knows what sound to play when it's hit
-    target.imageAlias = self.imagesToHitFileNameArray[randomImageIndex];
-    
+    ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImageIndex]
+                                        withTimerIncrement:timerIncrement
+                                            withImageAlias:self.imagesToHitFileNameArray[randomImageIndex]];
+
     //set the targets point value (use the target difficulty multiplier)
     target.points = points;
     
