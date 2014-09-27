@@ -116,6 +116,15 @@ int levelUp = 20;
     self.tapAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [self.tapAudioPlayer prepareToPlay];
     
+    // Construct URL to sound file
+    resourcePath = [[NSBundle mainBundle] resourcePath];
+    path = [NSString stringWithFormat:@"%@/ow.mp3",resourcePath];
+    soundUrl = [NSURL fileURLWithPath:path];
+    
+    // Create audio player object and initialize with URL to sound
+    self.owAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.owAudioPlayer prepareToPlay];
+    
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
@@ -219,6 +228,10 @@ int levelUp = 20;
     if([soundFile isEqualToString:@"tap.mp3"] && !self.tapAudioPlayer.playing){
         [self.tapAudioPlayer play];
     }
+    
+    if([soundFile isEqualToString:@"ow.mp3"] && !self.owAudioPlayer.playing){
+        [self.owAudioPlayer play];
+    }
 }
 
 //required by ImageToDrag delegate for firing bullets
@@ -251,6 +264,9 @@ int levelUp = 20;
 {
     //adjust the lives count
     self.lives += lives;
+    
+    //play a sound of getting hit
+    [self PlaySound:@"ow.mp3"];
     
     //end the game if there are no more
     if(self.lives<=0)
