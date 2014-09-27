@@ -105,6 +105,7 @@ int levelUp = 20;
     
     // Create audio player object and initialize with URL to sound
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.audioPlayer prepareToPlay];
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
@@ -201,9 +202,10 @@ int levelUp = 20;
 //required as an ImageToHit delegate
 -(void)PlaySound:(NSString*)soundFile //for playing a sound when something is hit, required by ImageToHitDelegate
 {
-    if([soundFile isEqualToString:@"meow.mp3"]){
-        [self.audioPlayer play];
-        NSLog(@"PLAY SOUND:%@",soundFile);
+    if(!self.audioPlayer.playing){
+        if([soundFile isEqualToString:@"meow.mp3"]){
+            [self.audioPlayer play];
+        }
     }
     
     
