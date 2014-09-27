@@ -57,6 +57,17 @@ int levelUp = 20;
                                      @"candy.jpeg",
                                      @"dog.png",
                                      nil];
+
+    //associate sounds with images to hit. must be ordered same as self.imagesToHitFileNameArray
+    self.imageSoundsArray = [NSArray arrayWithObjects:
+                                     @"tap.mp3",
+                                     @"meow.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
+                                     nil];
     
     //create images to hit.  must be ordered same as self.imagesToHitFileNameArray, so we
     //can tell what image filename is being used, when playing sounds for it
@@ -85,6 +96,15 @@ int levelUp = 20;
                                                              selector:@selector(AddAnImageToHit)
                                                              userInfo:nil
                                                               repeats:YES];
+    
+
+    // Construct URL to sound file
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *path = [NSString stringWithFormat:@"%@/meow.mp3", resourcePath];
+    NSURL *soundUrl = [NSURL fileURLWithPath:path];
+    
+    // Create audio player object and initialize with URL to sound
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
@@ -152,7 +172,7 @@ int levelUp = 20;
     //create a target to shoot
     ImageToHit *target = [[ImageToHit alloc] initWithImage:[self.imagesToHitArray objectAtIndex:randomImageIndex]
                                         withTimerIncrement:timerIncrement
-                                            withImageAlias:self.imagesToHitFileNameArray[randomImageIndex]];
+                                            withSound:self.imageSoundsArray[randomImageIndex]];
 
     //set the targets point value (use the target difficulty multiplier)
     target.points = points;
@@ -176,6 +196,17 @@ int levelUp = 20;
 {
     self.lScore += points;
     self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
+}
+
+//required as an ImageToHit delegate
+-(void)PlaySound:(NSString*)soundFile //for playing a sound when something is hit, required by ImageToHitDelegate
+{
+    if([soundFile isEqualToString:@"meow.mp3"]){
+        [self.audioPlayer play];
+        NSLog(@"PLAY SOUND:%@",soundFile);
+    }
+    
+    
 }
 
 //required by ImageToDrag delegate for firing bullets

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "ImageToDrag.h"
 #import "ImageToHit.h"
@@ -14,6 +15,13 @@
 
 //note, this is a delegate for ImageToHit (see ImageToHit.h for delegate definition)
 @interface CouchViewController : UIViewController <ImageToHitDelegate,ImageToShootDelegate,ImageToDragDelegate>
+{
+    //INSTANCE VARIABLES
+ 
+}
+
+//instance variable player for playing sounds
+@property AVAudioPlayer * audioPlayer;
 
 //weak means this will not hold a reference to the object
 @property (weak, nonatomic) IBOutlet UILabel *score; //label for showing score
@@ -37,12 +45,17 @@
 //array of filenames of images to hit
 @property  NSArray * imagesToHitFileNameArray;
 
+//array of sounds the images to hit make
+@property NSArray * imageSoundsArray;
+
 //array of images to hit
 @property  NSArray * imagesToHitArray;
 
 -(void)AddAnImageToHit; //for adding objects to hit to the main view
 
 -(void)AdjustScore:(int)points; //for adding/removing points to the overall score, required by delegates
+
+-(void)PlaySound:(NSString*)soundFile; //for playing a sound when something is hit, required by ImageToHitDelegate
 
 -(void)Fire;
 

@@ -19,12 +19,12 @@ static int lastWidth;
 
 
 //when initializing with the image, make this imageview available to user interaction
-- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc withImageAlias:(NSString*)imageAliasParm;
+- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc withSound:(NSString*)soundFileParm;
 {
     self = [super initWithImage:image];
     
     //set our image alias, so we know what noise to play when this is hit
-    self.imageAlias = imageAliasParm;
+    self.soundFile = soundFileParm;
     
     //set the timer interval
     self.timerIncrement = tinc;
@@ -113,6 +113,9 @@ static int lastWidth;
     //increment the score
     [self.delegate AdjustScore:self.points];
     
+    //play a sound
+    [self.delegate PlaySound:self.soundFile];
+    
     //make it disappear
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -122,10 +125,7 @@ static int lastWidth;
                          //remove from view
                          [self removeFromSuperview];
                      }];
-    //play a sound
-    if([self.imageAlias isEqualToString:@"cat.png"]){
-        NSLog(@"image alias:%@",self.imageAlias);
-    }
+
     
     
 }

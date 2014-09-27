@@ -12,15 +12,18 @@
 @protocol ImageToHitDelegate <NSObject>
 @required
 -(void)AdjustScore:(int)points;
+-(void)PlaySound:(NSString*)imageAliasForSound;
+
 @end
 
 
 @interface ImageToHit : UIImageView
 
+//custom initialization method, that additionally takes a timer increment, for speed, and image alias, to know what sound to play
+- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc withSound:(NSString*)soundFileParm;
 
-- (id)initWithImage:(UIImage *)image withTimerIncrement:(float)tinc withImageAlias:(NSString*)imageAliasParm;
 
-//access to the registered delegate
+//access to the registered delegate, that will adjust the score when the image is hit
 @property (weak, nonatomic) id <ImageToHitDelegate> delegate;
 
 @property (strong) NSTimer * checkPositionTimer;
@@ -31,7 +34,8 @@
 
 @property int points;
 
-@property NSString * imageAlias;
+//sound associated with hitting this image
+@property NSString * soundFile;
 
 -(void)PlaceImageAtTop;
 
