@@ -21,7 +21,8 @@
 }
 
 //instance variable player for playing sounds
-@property AVAudioPlayer * audioPlayer;
+@property AVAudioPlayer * meowAudioPlayer;
+@property AVAudioPlayer * tapAudioPlayer;
 
 //weak means this will not hold a reference to the object
 @property (weak, nonatomic) IBOutlet UILabel *score; //label for showing score

@@ -104,8 +104,18 @@ int levelUp = 20;
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     
     // Create audio player object and initialize with URL to sound
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
-    [self.audioPlayer prepareToPlay];
+    self.meowAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.meowAudioPlayer prepareToPlay];
+    
+    // Construct URL to sound file
+    resourcePath = [[NSBundle mainBundle] resourcePath];
+    path = [NSString stringWithFormat:@"%@/tap.mp3",resourcePath];
+    soundUrl = [NSURL fileURLWithPath:path];
+    
+    // Create audio player object and initialize with URL to sound
+    self.tapAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.tapAudioPlayer prepareToPlay];
+    
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
@@ -202,13 +212,13 @@ int levelUp = 20;
 //required as an ImageToHit delegate
 -(void)PlaySound:(NSString*)soundFile //for playing a sound when something is hit, required by ImageToHitDelegate
 {
-    if(!self.audioPlayer.playing){
-        if([soundFile isEqualToString:@"meow.mp3"]){
-            [self.audioPlayer play];
-        }
+    if([soundFile isEqualToString:@"meow.mp3"] && !self.meowAudioPlayer.playing){
+        [self.meowAudioPlayer play];
     }
     
-    
+    if([soundFile isEqualToString:@"tap.mp3"] && !self.tapAudioPlayer.playing){
+        [self.tapAudioPlayer play];
+    }
 }
 
 //required by ImageToDrag delegate for firing bullets

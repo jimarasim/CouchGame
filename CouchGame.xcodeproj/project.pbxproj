@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1A32D8019D7515700DE1814 /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E1A32D7F19D7515700DE1814 /* tap.mp3 */; };
 		E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9C19D5AD5900309FBA /* space.jpg */; };
 		E1D2FF9F19D5AF5300309FBA /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D2FF9E19D5AF5300309FBA /* dog.png */; };
 		E1F960A419D6087F00C89B25 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F960A319D6087F00C89B25 /* AVFoundation.framework */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E1A32D7F19D7515700DE1814 /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tap.mp3; path = audacity/tap.mp3; sourceTree = SOURCE_ROOT; };
 		E1D2FF9C19D5AD5900309FBA /* space.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space.jpg; sourceTree = "<group>"; };
 		E1D2FF9E19D5AF5300309FBA /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
 		E1F960A319D6087F00C89B25 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -181,6 +183,7 @@
 		E2798FD918179C7600BC853F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1A32D7F19D7515700DE1814 /* tap.mp3 */,
 				E1F960A519D6092400C89B25 /* meow.mp3 */,
 				E1D2FF9E19D5AF5300309FBA /* dog.png */,
 				E1D2FF9C19D5AD5900309FBA /* space.jpg */,
@@ -304,6 +307,7 @@
 				E27D398218458D0100FF7461 /* cat.png in Resources */,
 				E24F969C18347FC1004B34D6 /* can.png in Resources */,
 				E1F960A619D6092400C89B25 /* meow.mp3 in Resources */,
+				E1A32D8019D7515700DE1814 /* tap.mp3 in Resources */,
 				E24CD540184EED99006916E0 /* iPad.storyboard in Resources */,
 				E2732AEE18300BCD00F214A2 /* coffeetable.png in Resources */,
 				E1D2FF9D19D5AD5900309FBA /* space.jpg in Resources */,
