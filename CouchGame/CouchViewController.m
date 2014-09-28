@@ -66,7 +66,7 @@ int levelUp = 20;
                                      @"tap.mp3",
                                      @"tap.mp3",
                                      @"tap.mp3",
-                                     @"tap.mp3",
+                                     @"woof.mp3",
                                      nil];
     
     //create images to hit.  must be ordered same as self.imagesToHitFileNameArray, so we
@@ -98,6 +98,7 @@ int levelUp = 20;
                                                               repeats:YES];
     
 
+//MEOW SOUND
     // Construct URL to sound file
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString *path = [NSString stringWithFormat:@"%@/meow.mp3", resourcePath];
@@ -107,6 +108,7 @@ int levelUp = 20;
     self.meowAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [self.meowAudioPlayer prepareToPlay];
     
+//TAP SOUND
     // Construct URL to sound file
     resourcePath = [[NSBundle mainBundle] resourcePath];
     path = [NSString stringWithFormat:@"%@/tap.mp3",resourcePath];
@@ -116,6 +118,7 @@ int levelUp = 20;
     self.tapAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [self.tapAudioPlayer prepareToPlay];
     
+//OW SOUND
     // Construct URL to sound file
     resourcePath = [[NSBundle mainBundle] resourcePath];
     path = [NSString stringWithFormat:@"%@/ow.mp3",resourcePath];
@@ -125,13 +128,22 @@ int levelUp = 20;
     self.owAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [self.owAudioPlayer prepareToPlay];
     
+//WOOF SOUND
+    // Construct URL to sound file
+    resourcePath = [[NSBundle mainBundle] resourcePath];
+    path = [NSString stringWithFormat:@"%@/woof.mp3",resourcePath];
+    soundUrl = [NSURL fileURLWithPath:path];
+    
+    // Create audio player object and initialize with URL to sound
+    self.woofAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.woofAudioPlayer prepareToPlay];
+    
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
     UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     
     backgroundImage.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    printf("%f, %f",self.view.frame.size.width,self.view.frame.size.height);
     
     [self.view addSubview:backgroundImage];
     
@@ -231,6 +243,10 @@ int levelUp = 20;
     
     if([soundFile isEqualToString:@"ow.mp3"] && !self.owAudioPlayer.playing){
         [self.owAudioPlayer play];
+    }
+    
+    if([soundFile isEqualToString:@"woof.mp3"] && !self.owAudioPlayer.playing){
+        [self.woofAudioPlayer play];
     }
 }
 
