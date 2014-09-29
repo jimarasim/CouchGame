@@ -35,17 +35,18 @@ int levelUp = 20;
     //initialize the duration of the game
     self.duration = 0;
     
+    //create the fire bullet image to use for all fire bullets
+    self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
+    
     //initialize the couch lives allowed (decremented when couch is touched)
     self.lives = 3;
     
+//IMAGES TO HIT
     //set the maximum number of objects in the view at once (to limit images to hit)
     self.maxObjects = 20;
     
     //set the timer interval for adding objects to hit (seconds)
     self.timerIncrement = 0.5;
-    
-    //create the fire bullet image to use for all fire bullets
-    self.fireBullet = [UIImage imageNamed:@"fireshot.png"];
     
     //create filename array for images to hit
     self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
@@ -84,18 +85,32 @@ int levelUp = 20;
     //get the number of possible speeds in the speeds array
     numberOfSpeeds =sizeof(imageToHitSpeeds)/sizeof(imageToHitSpeeds[0]);
     
-    //set the background image
-    [self SetBackgroundImage:@"space.jpg"];
-    
-    //put the couch on the board
-    [self CreateCouch];
     
     //kick off the timer for objects to hit
     self.addTargetTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerIncrement
-                                                               target:self
-                                                             selector:@selector(AddAnImageToHit)
-                                                             userInfo:nil
-                                                              repeats:YES];
+                                                           target:self
+                                                         selector:@selector(AddAnImageToHit)
+                                                         userInfo:nil
+                                                          repeats:YES];
+
+//BACKGROUND - "SPACE"
+    //set the background image
+    //initialize the image
+    self.backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"space.jpg"]];
+    
+    //add image as a subview
+    [self.view addSubview:self.backgroundImage];
+    
+    //move behind other subviews (like score, which is being blocked)
+    [self.view  sendSubviewToBack:self.backgroundImage];
+    
+    //stretch it out
+    self.backgroundImage.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+
+    
+//COUCH
+    //put the couch on the board
+    [self CreateCouch];
     
 
 //MEOW SOUND
@@ -141,11 +156,9 @@ int levelUp = 20;
 }
 
 -(void)SetBackgroundImage:(NSString*)imageName{
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     
-    backgroundImage.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    [self.backgroundImage setImage:[UIImage imageNamed:imageName]];
     
-    [self.view addSubview:backgroundImage];
     
 }
 
@@ -228,6 +241,37 @@ int levelUp = 20;
 {
     self.lScore += points;
     self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
+    
+    if(self.lScore>0 && self.lScore<1000){
+        [self SetBackgroundImage:@"space.jpg"];
+    }
+    else if(self.lScore>1000 && self.lScore<2000){
+        [self SetBackgroundImage:@"dog.png"];
+    }
+    else if (self.lScore>2000 && self.lScore<3000)
+    {
+        [self SetBackgroundImage:@"cat.png"];
+    }
+    else if (self.lScore>3000 && self.lScore<4000)
+    {
+        [self SetBackgroundImage:@"coffeetable.png"];
+    }
+    else if (self.lScore>4000 && self.lScore<5000)
+    {
+        [self SetBackgroundImage:@"lamp.png"];
+    }
+    else if (self.lScore>5000 && self.lScore<6000)
+    {
+        [self SetBackgroundImage:@"tv.png"];
+    }
+    else if (self.lScore>6000 && self.lScore<7000)
+    {
+        [self SetBackgroundImage:@"candy.jpeg"];
+    }
+    else if (self.lScore>7000 && self.lScore<8000)
+    {
+        [self SetBackgroundImage:@"lamp.png"];
+    }
 }
 
 //required as an ImageToHit delegate

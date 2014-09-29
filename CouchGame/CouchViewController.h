@@ -37,6 +37,8 @@
 
 @property  UIImage * fireBullet; //image to use for fire bullets
 
+@property UIImageView * backgroundImage; //image to use for the background
+
 @property float timerIncrement; //how long to wait between dropping objects to hit
 
 @property int maxObjects; //for keeping track of total objects in the view at one time
