@@ -270,7 +270,7 @@ int levelUp = 20;
     }
     else if (self.lScore>7000 && self.lScore<8000)
     {
-        [self SetBackgroundImage:@"lamp.png"];
+        [self SetBackgroundImage:@"can.png"];
     }
 }
 
