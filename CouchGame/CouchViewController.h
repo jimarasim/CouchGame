@@ -13,12 +13,21 @@
 #import "ImageToHit.h"
 #import "ImageToShoot.h"
 
+//delegate method implemented by viewcontroller when image is hit; to update the score
+@protocol ReportScoreDelegate <NSObject>
+@required
+-(void)setScore:(long)score;
+@end
+
 //note, this is a delegate for ImageToHit (see ImageToHit.h for delegate definition)
 @interface CouchViewController : UIViewController <ImageToHitDelegate,ImageToShootDelegate,ImageToDragDelegate>
 {
     //INSTANCE VARIABLES
  
 }
+
+//access to delegate
+@property (weak, nonatomic) id <ReportScoreDelegate> delegate;
 
 //instance variable player for playing sounds
 @property AVAudioPlayer * meowAudioPlayer;

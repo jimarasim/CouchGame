@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CouchViewController.h"
 
-@interface StartGameViewController : UIViewController
+@interface StartGameViewController : UIViewController <ReportScoreDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *StartGameButton;
 @property (weak, nonatomic) IBOutlet UILabel *ScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ScoreMessage;

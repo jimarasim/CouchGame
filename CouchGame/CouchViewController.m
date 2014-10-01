@@ -29,6 +29,11 @@ int levelUp = 20;
 {
     [super viewDidLoad];
     
+    //set welcome screen as delegate for this view controller, so high score can be updated
+    NSUInteger nViewControllers = self.navigationController.viewControllers.count;
+    self.delegate = (StartGameViewController*)[self.navigationController.viewControllers objectAtIndex:nViewControllers-2];
+    
+    
     //initialize the score
     self.lScore = 0;
     
@@ -377,9 +382,7 @@ int levelUp = 20;
     self.score = nil;
     subviews = nil;
     
-    //access the previous view controller (start game), and set the score
-    NSUInteger nViewControllers = self.navigationController.viewControllers.count;
-    [(StartGameViewController*)[self.navigationController.viewControllers objectAtIndex:nViewControllers-2] setScore:self.lScore];
+    [self.delegate setScore:self.lScore];
     
     //go back to start game controller
     [self.navigationController popViewControllerAnimated:YES];
