@@ -36,7 +36,7 @@
     self.animationArray = [NSArray arrayWithObjects:
                             [UIImage imageNamed:@"v2couch1.png"],
                             [UIImage imageNamed:@"v2couch2.png"],
-                            [UIImage imageNamed:@"v2couch3.png"],
+                            [UIImage imageNamed:@"couch.png"],
                             nil];
     self.animationImages = self.animationArray;
     self.animationDuration = 1.0;

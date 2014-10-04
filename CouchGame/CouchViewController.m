@@ -48,23 +48,13 @@ int levelUp = 20;
     
 //IMAGES TO HIT
     //set the maximum number of objects in the view at once (to limit images to hit)
-    self.maxObjects = 20;
+    self.maxObjects = 10;
     
     //set the timer interval for adding objects to hit (seconds)
     self.timerIncrement = 0.5;
     
     //create filename array for images to hit
     //NOTE: THESE IMAGE NAMES ARE HARDCODED ELSEWHERE, IN CASE YOU CHANGE THEM
-//    self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
-//                                     @"coffeetable.png",
-//                                     @"cat.png",
-//                                     @"lamp.png",
-//                                     @"tv.png",
-//                                     @"can.png",
-//                                     @"candy.jpeg",
-//                                     @"dog.png",
-//                                     nil];
-    
     self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
                                      @"v2coffeetable.png",
                                      @"v2cat.png",
@@ -195,7 +185,7 @@ int levelUp = 20;
 -(void)CreateCouch
 {
     //create the couch and place it in the view
-    self.couch = [[ImageToDrag alloc] initWithImage:[UIImage imageNamed:@"couch.png"]];
+    self.couch = [[ImageToDrag alloc] initWithImage:[UIImage imageNamed:@"v2couch3.png"]];
     
     //set this up as the couch's delegate when it wants to shoot
     self.couch.delegate = self;
@@ -214,22 +204,19 @@ int levelUp = 20;
     self.duration += 1;
     
     //don't add a target if there are already a lot
-    if ([[self.view subviews] count] >= self.maxObjects)
-    {
+    if ([[self.view subviews] count] >= self.maxObjects){
         return;
     }
     
     //set available speeds based on duration of the game
     int randomSpeedIndex;
-    if((self.duration/levelUp)>numberOfSpeeds)
-    {
+    if((self.duration/levelUp)>numberOfSpeeds){
         //phase out the lower speeds, so that eventually only the highest speed is chosen
         int minimumSpeed = ((self.duration/levelUp)>=(numberOfSpeeds*2))?numberOfSpeeds-1:(self.duration/levelUp)-numberOfSpeeds;
         
         randomSpeedIndex=arc4random_uniform((numberOfSpeeds-1) - minimumSpeed + 1) + minimumSpeed;
     }
-    else
-    {
+    else{
         //every levelUp durations, make another speed available
         randomSpeedIndex = (int)arc4random_uniform(self.duration/levelUp);
     }
@@ -258,12 +245,10 @@ int levelUp = 20;
     //add the target to the view
     [self.view addSubview:target];
         
-    
     //put target at the top of the view (can't do this in initWithImage because superview.bounds returns 0 for width there
     [target PlaceImageAtTop];
     
     target=nil;
-    
 }
 
 //required as an ImageToHit and ImageToShoot and ImageToDrag delegate
@@ -272,43 +257,36 @@ int levelUp = 20;
     self.lScore += points;
     self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
     
-    if(self.lScore<1000){
+    if(self.lScore<2000){
         [self SetBackgroundImage:@"space.jpg"];
     }
-    else if(self.lScore>1000 && self.lScore<2000){
+    else if(self.lScore>2000 && self.lScore<4000){
         [self SetBackgroundImage:@"v2dog.png"];
     }
-    else if (self.lScore>2000 && self.lScore<3000)
-    {
+    else if (self.lScore>4000 && self.lScore<6000){
         [self SetBackgroundImage:@"v2cat.png"];
     }
-    else if (self.lScore>3000 && self.lScore<4000)
-    {
+    else if (self.lScore>6000 && self.lScore<8000){
         [self SetBackgroundImage:@"v2coffeetable.png"];
     }
-    else if (self.lScore>4000 && self.lScore<5000)
-    {
+    else if (self.lScore>8000 && self.lScore<10000){
         [self SetBackgroundImage:@"v2lamp.png"];
     }
-    else if (self.lScore>5000 && self.lScore<6000)
-    {
+    else if (self.lScore>10000 && self.lScore<12000){
         [self SetBackgroundImage:@"v2tv.png"];
     }
-    else if (self.lScore>6000 && self.lScore<7000)
-    {
+    else if (self.lScore>12000 && self.lScore<14000){
         [self SetBackgroundImage:@"v2bear.png"];
     }
-    else if (self.lScore>7000 && self.lScore<8000)
-    {
+    else if (self.lScore>14000 && self.lScore<6000){
         [self SetBackgroundImage:@"v2can.png"];
     }
-    else
-    {
+    else{
         [self SetBackgroundImage:@"v2chaise.png"];
     }
 }
 
-//required as an ImageToHit delegate
+//Called by ImageToHit to play the respective sound
 -(void)PlaySound:(NSString*)soundFile //for playing a sound when something is hit, required by ImageToHitDelegate
 {
     if([soundFile isEqualToString:@"meow.mp3"] && !self.meowAudioPlayer.playing){
@@ -326,7 +304,6 @@ int levelUp = 20;
     if([soundFile isEqualToString:@"woof.mp3"] && !self.woofAudioPlayer.playing){
         [self.woofAudioPlayer play];
     }
-    
     
     if([soundFile isEqualToString:@"roar.mp3"] && !self.roarAudioPlayer.playing){
         [self.roarAudioPlayer play];
