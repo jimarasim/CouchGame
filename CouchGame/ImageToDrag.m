@@ -34,9 +34,9 @@
     
     //setup sequence of images to play when the couch is touched
     self.animationArray = [NSArray arrayWithObjects:
-                            [UIImage imageNamed:@"couch1.png"],
-                            [UIImage imageNamed:@"couch2.png"],
-                            [UIImage imageNamed:@"couch3.png"],
+                            [UIImage imageNamed:@"v2couch1.png"],
+                            [UIImage imageNamed:@"v2couch2.png"],
+                            [UIImage imageNamed:@"v2couch3.png"],
                             nil];
     self.animationImages = self.animationArray;
     self.animationDuration = 1.0;

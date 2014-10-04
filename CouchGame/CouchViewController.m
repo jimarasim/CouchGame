@@ -54,14 +54,26 @@ int levelUp = 20;
     self.timerIncrement = 0.5;
     
     //create filename array for images to hit
+    //NOTE: THESE IMAGE NAMES ARE HARDCODED ELSEWHERE, IN CASE YOU CHANGE THEM
+//    self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
+//                                     @"coffeetable.png",
+//                                     @"cat.png",
+//                                     @"lamp.png",
+//                                     @"tv.png",
+//                                     @"can.png",
+//                                     @"candy.jpeg",
+//                                     @"dog.png",
+//                                     nil];
+    
     self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
-                                     @"coffeetable.png",
-                                     @"cat.png",
-                                     @"lamp.png",
-                                     @"tv.png",
-                                     @"can.png",
-                                     @"candy.jpeg",
-                                     @"dog.png",
+                                     @"v2coffeetable.png",
+                                     @"v2cat.png",
+                                     @"v2lamp.png",
+                                     @"v2tv.png",
+                                     @"v2can.png",
+                                     @"v2chaise.png",
+                                     @"v2dog.png",
+                                     @"v2bear.png",
                                      nil];
 
     //associate sounds with images to hit. must be ordered same as self.imagesToHitFileNameArray
@@ -73,6 +85,7 @@ int levelUp = 20;
                                      @"tap.mp3",
                                      @"tap.mp3",
                                      @"woof.mp3",
+                                     @"roar.mp3",
                                      nil];
     
     //create images to hit.  must be ordered same as self.imagesToHitFileNameArray, so we
@@ -85,6 +98,7 @@ int levelUp = 20;
                              [UIImage imageNamed:self.imagesToHitFileNameArray[4]],
                              [UIImage imageNamed:self.imagesToHitFileNameArray[5]],
                              [UIImage imageNamed:self.imagesToHitFileNameArray[6]],
+                             [UIImage imageNamed:self.imagesToHitFileNameArray[7]],
                              nil];
     
     //get the number of possible speeds in the speeds array
@@ -157,6 +171,17 @@ int levelUp = 20;
     // Create audio player object and initialize with URL to sound
     self.woofAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [self.woofAudioPlayer prepareToPlay];
+    
+    
+//ROAR SOUND
+    // Construct URL to sound file
+    resourcePath = [[NSBundle mainBundle] resourcePath];
+    path = [NSString stringWithFormat:@"%@/roar.mp3",resourcePath];
+    soundUrl = [NSURL fileURLWithPath:path];
+    
+    // Create audio player object and initialize with URL to sound
+    self.roarAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [self.roarAudioPlayer prepareToPlay];
     
 }
 
@@ -247,35 +272,39 @@ int levelUp = 20;
     self.lScore += points;
     self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
     
-    if(self.lScore>0 && self.lScore<1000){
+    if(self.lScore<1000){
         [self SetBackgroundImage:@"space.jpg"];
     }
     else if(self.lScore>1000 && self.lScore<2000){
-        [self SetBackgroundImage:@"dog.png"];
+        [self SetBackgroundImage:@"v2dog.png"];
     }
     else if (self.lScore>2000 && self.lScore<3000)
     {
-        [self SetBackgroundImage:@"cat.png"];
+        [self SetBackgroundImage:@"v2cat.png"];
     }
     else if (self.lScore>3000 && self.lScore<4000)
     {
-        [self SetBackgroundImage:@"coffeetable.png"];
+        [self SetBackgroundImage:@"v2coffeetable.png"];
     }
     else if (self.lScore>4000 && self.lScore<5000)
     {
-        [self SetBackgroundImage:@"lamp.png"];
+        [self SetBackgroundImage:@"v2lamp.png"];
     }
     else if (self.lScore>5000 && self.lScore<6000)
     {
-        [self SetBackgroundImage:@"tv.png"];
+        [self SetBackgroundImage:@"v2tv.png"];
     }
     else if (self.lScore>6000 && self.lScore<7000)
     {
-        [self SetBackgroundImage:@"candy.jpeg"];
+        [self SetBackgroundImage:@"v2bear.png"];
     }
     else if (self.lScore>7000 && self.lScore<8000)
     {
-        [self SetBackgroundImage:@"can.png"];
+        [self SetBackgroundImage:@"v2can.png"];
+    }
+    else
+    {
+        [self SetBackgroundImage:@"v2chaise.png"];
     }
 }
 
@@ -294,8 +323,13 @@ int levelUp = 20;
         [self.owAudioPlayer play];
     }
     
-    if([soundFile isEqualToString:@"woof.mp3"] && !self.owAudioPlayer.playing){
+    if([soundFile isEqualToString:@"woof.mp3"] && !self.woofAudioPlayer.playing){
         [self.woofAudioPlayer play];
+    }
+    
+    
+    if([soundFile isEqualToString:@"roar.mp3"] && !self.roarAudioPlayer.playing){
+        [self.roarAudioPlayer play];
     }
 }
 

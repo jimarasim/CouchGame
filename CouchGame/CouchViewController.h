@@ -34,6 +34,7 @@
 @property AVAudioPlayer * tapAudioPlayer;
 @property AVAudioPlayer * owAudioPlayer;
 @property AVAudioPlayer * woofAudioPlayer;
+@property AVAudioPlayer * roarAudioPlayer;
 
 //weak means this will not hold a reference to the object
 @property (weak, nonatomic) IBOutlet UILabel *score; //label for showing score
