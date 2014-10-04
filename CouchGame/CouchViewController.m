@@ -175,6 +175,45 @@ int levelUp = 20;
     
 }
 
+
+//ADJUST THE SCORE BASED ON AN EVENT THAT OCCURRED, THAT ALTERS THE SCORE
+//SET THE BACKGROUND IMAGE TO WHATEVER LEVEL WE'RE AT, ACCORDINGLY
+//required as an ImageToHit and ImageToShoot and ImageToDrag delegate
+-(void)AdjustScore:(int)points
+{
+    self.lScore += points;
+    self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
+    
+    if(self.lScore<2000){
+        [self SetBackgroundImage:@"space.jpg"];
+    }
+    else if(self.lScore>2000 && self.lScore<4000){
+        [self SetBackgroundImage:@"v2dog.png"];
+    }
+    else if (self.lScore>4000 && self.lScore<6000){
+        [self SetBackgroundImage:@"v2cat.png"];
+    }
+    else if (self.lScore>6000 && self.lScore<8000){
+        [self SetBackgroundImage:@"v2coffeetable.png"];
+    }
+    else if (self.lScore>8000 && self.lScore<10000){
+        [self SetBackgroundImage:@"v2lamp.png"];
+    }
+    else if (self.lScore>10000 && self.lScore<12000){
+        [self SetBackgroundImage:@"v2tv.png"];
+    }
+    else if (self.lScore>12000 && self.lScore<14000){
+        [self SetBackgroundImage:@"v2bear.png"];
+    }
+    else if (self.lScore>14000 && self.lScore<6000){
+        [self SetBackgroundImage:@"v2can.png"];
+    }
+    else{
+        [self SetBackgroundImage:@"v2chaise.png"];
+    }
+}
+
+//SET THE BACKGROUND IMAGE
 -(void)SetBackgroundImage:(NSString*)imageName{
     
     [self.backgroundImage setImage:[UIImage imageNamed:imageName]];
@@ -182,6 +221,7 @@ int levelUp = 20;
     
 }
 
+//CREATE THE COUCH AND PLACE IT IN THE VIEW
 -(void)CreateCouch
 {
     //create the couch and place it in the view
@@ -197,14 +237,15 @@ int levelUp = 20;
     [self.view addSubview:self.couch];
 }
 
-
+//CREATE AN IMAGE TO HIT, AND ADD IT TO THE VIEW
 -(void)AddAnImageToHit
 {
     //increment the duration of the game
     self.duration += 1;
     
+    //count the
     //don't add a target if there are already a lot
-    if ([[self.view subviews] count] >= self.maxObjects){
+    if ([self NumberOfImagesToHit] >= self.maxObjects){
         return;
     }
     
@@ -251,40 +292,6 @@ int levelUp = 20;
     target=nil;
 }
 
-//required as an ImageToHit and ImageToShoot and ImageToDrag delegate
--(void)AdjustScore:(int)points
-{
-    self.lScore += points;
-    self.score.text =[NSString stringWithFormat:@"%li", self.lScore];
-    
-    if(self.lScore<2000){
-        [self SetBackgroundImage:@"space.jpg"];
-    }
-    else if(self.lScore>2000 && self.lScore<4000){
-        [self SetBackgroundImage:@"v2dog.png"];
-    }
-    else if (self.lScore>4000 && self.lScore<6000){
-        [self SetBackgroundImage:@"v2cat.png"];
-    }
-    else if (self.lScore>6000 && self.lScore<8000){
-        [self SetBackgroundImage:@"v2coffeetable.png"];
-    }
-    else if (self.lScore>8000 && self.lScore<10000){
-        [self SetBackgroundImage:@"v2lamp.png"];
-    }
-    else if (self.lScore>10000 && self.lScore<12000){
-        [self SetBackgroundImage:@"v2tv.png"];
-    }
-    else if (self.lScore>12000 && self.lScore<14000){
-        [self SetBackgroundImage:@"v2bear.png"];
-    }
-    else if (self.lScore>14000 && self.lScore<6000){
-        [self SetBackgroundImage:@"v2can.png"];
-    }
-    else{
-        [self SetBackgroundImage:@"v2chaise.png"];
-    }
-}
 
 //Called by ImageToHit to play the respective sound
 -(void)PlaySound:(NSString*)soundFile //for playing a sound when something is hit, required by ImageToHitDelegate
@@ -400,7 +407,18 @@ int levelUp = 20;
     
 }
 
- 
+//count the number of images to hit currently in the view
+-(long)NumberOfImagesToHit
+{
+    long numberOfImagesToHit=0;
+    
+    numberOfImagesToHit=[[self.view subviews] count];
+    
+    return numberOfImagesToHit;
+    
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
