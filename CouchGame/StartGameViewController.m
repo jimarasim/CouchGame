@@ -30,19 +30,27 @@ long highScore=0;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+//TITLE LABEL
+    [self.TitleLabel setTextColor:[UIColor orangeColor]];
+    [self.TitleLabel setFont:[UIFont boldSystemFontOfSize:30.0]];
+    [self.TitleLabel sizeToFit];
+    
 //INSTRUCTION LABEL
-    [self.InstructionsLabel setTextColor:[UIColor whiteColor]];
-    [self.InstructionsLabel setFont:[UIFont boldSystemFontOfSize:10.0]];
-    [self.InstructionsLabel setText:@"Drag and Tap couch to shoot\nLose points for missing"];
+    [self.InstructionsLabel setTextColor:[UIColor greenColor]];
+    [self.InstructionsLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [self.InstructionsLabel setText:@"+Drag Couch\n+Tap It To Shoot\n+Lose Points for Missing"];
+
+//SCORE LABELs
+    [self.ScoreLabel setTextColor:[UIColor yellowColor]];
+    [self.ScoreMessage setTextColor:[UIColor yellowColor]];
+    [self.ScoreLabel setFont:[UIFont boldSystemFontOfSize:20.0]];
+    [self.ScoreMessage setFont:[UIFont boldSystemFontOfSize:20.0]];
     
 //START BUTTON
     [self.StartGameButton setBackgroundImage:[UIImage imageNamed:@"v2couch3.png"] forState:UIControlStateNormal];
     [self.StartGameButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-//OTHER LABELS
-    [self.ScoreLabel setTextColor:[UIColor whiteColor]];
-    [self.ScoreMessage setTextColor:[UIColor whiteColor]];
-    [self.TitleLabel setTextColor:[UIColor whiteColor]];
+    self.StartGameButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
+
     
 //BACKGROUND - "SPACE"
     //set the background image

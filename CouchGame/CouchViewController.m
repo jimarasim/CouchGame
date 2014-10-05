@@ -54,28 +54,41 @@ int levelUp = 20;
     self.timerIncrement = 0.5;
     
     //create filename array for images to hit
+    
+    /*
+     DIFFICULTY:
+     DOG
+     CAT
+     BEAR
+     LAMP
+     CAN
+     TV
+     CHAISE
+     COFFEETABLE
+     */
+    
     //NOTE: THESE IMAGE NAMES ARE HARDCODED ELSEWHERE, IN CASE YOU CHANGE THEM
     self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
                                      @"v2coffeetable.png",
-                                     @"v2cat.png",
-                                     @"v2lamp.png",
-                                     @"v2tv.png",
-                                     @"v2can.png",
                                      @"v2chaise.png",
+                                     @"v2tv.png",
+                                     @"v2lamp.png",
+                                     @"v2cat.png",
                                      @"v2dog.png",
                                      @"v2bear.png",
+                                     @"v2can.png",
                                      nil];
 
     //associate sounds with images to hit. must be ordered same as self.imagesToHitFileNameArray
     self.imageSoundsArray = [NSArray arrayWithObjects:
                                      @"tap.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
+                                     @"tap.mp3",
                                      @"meow.mp3",
-                                     @"tap.mp3",
-                                     @"tap.mp3",
-                                     @"tap.mp3",
-                                     @"tap.mp3",
                                      @"woof.mp3",
                                      @"roar.mp3",
+                                     @"tap.mp3",
                                      nil];
     
     //create images to hit.  must be ordered same as self.imagesToHitFileNameArray, so we
