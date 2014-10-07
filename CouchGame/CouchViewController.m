@@ -22,7 +22,7 @@ float imageToHitSpeeds[]={0.04,0.035,0.03,0.025,0.02,0.015,0.01,0.0095,0.009,0.0
 int numberOfSpeeds;
 
 //how many durations to wait until increasing difficulty
-int levelUp = 20;
+int levelUp = 50;
 
 //called everytime the view comes into play
 - (void)viewDidLoad
@@ -48,25 +48,12 @@ int levelUp = 20;
     
 //IMAGES TO HIT
     //set the maximum number of objects in the view at once (to limit images to hit)
-    self.maxObjects = 10;
+    self.maxObjects = 5;
     
     //set the timer interval for adding objects to hit (seconds)
     self.timerIncrement = 0.5;
     
     //create filename array for images to hit
-    
-    /*
-     DIFFICULTY:
-     DOG
-     CAT
-     BEAR
-     LAMP
-     CAN
-     TV
-     CHAISE
-     COFFEETABLE
-     */
-    
     //NOTE: THESE IMAGE NAMES ARE HARDCODED ELSEWHERE, IN CASE YOU CHANGE THEM
     self.imagesToHitFileNameArray = [NSArray arrayWithObjects:
                                      @"v2coffeetable.png",
@@ -201,28 +188,82 @@ int levelUp = 20;
         [self SetBackgroundImage:@"space.jpg"];
     }
     else if(self.lScore>2000 && self.lScore<4000){
-        [self SetBackgroundImage:@"v2dog.png"];
+        [self SetBackgroundImage:@"back16.JPG"];
     }
     else if (self.lScore>4000 && self.lScore<6000){
-        [self SetBackgroundImage:@"v2cat.png"];
+        [self SetBackgroundImage:@"back17.JPG"];
     }
     else if (self.lScore>6000 && self.lScore<8000){
-        [self SetBackgroundImage:@"v2coffeetable.png"];
+        [self SetBackgroundImage:@"back18.JPG"];
     }
     else if (self.lScore>8000 && self.lScore<10000){
-        [self SetBackgroundImage:@"v2lamp.png"];
+        [self SetBackgroundImage:@"back19.JPG"];
     }
     else if (self.lScore>10000 && self.lScore<12000){
-        [self SetBackgroundImage:@"v2tv.png"];
+        [self SetBackgroundImage:@"back20.JPG"];
     }
     else if (self.lScore>12000 && self.lScore<14000){
-        [self SetBackgroundImage:@"v2bear.png"];
+        [self SetBackgroundImage:@"back21.JPG"];
     }
-    else if (self.lScore>14000 && self.lScore<6000){
-        [self SetBackgroundImage:@"v2can.png"];
+    else if (self.lScore>14000 && self.lScore<16000){
+        [self SetBackgroundImage:@"back22.JPG"];
     }
-    else{
-        [self SetBackgroundImage:@"v2chaise.png"];
+    else if(self.lScore>16000 && self.lScore<18000){
+        [self SetBackgroundImage:@"back23.JPG"];
+    }
+    else if(self.lScore>18000 && self.lScore<20000){
+        [self SetBackgroundImage:@"back24.JPG"];
+    }
+    else if (self.lScore>20000 && self.lScore<22000){
+        [self SetBackgroundImage:@"back25.JPG"];
+    }
+    else if (self.lScore>22000 && self.lScore<24000){
+        [self SetBackgroundImage:@"back26.JPG"];
+    }
+    else if (self.lScore>24000 && self.lScore<26000){
+        [self SetBackgroundImage:@"back1.JPG"];
+    }
+    else if (self.lScore>26000 && self.lScore<28000){
+        [self SetBackgroundImage:@"back2.JPG"];
+    }
+    else if (self.lScore>28000 && self.lScore<30000){
+        [self SetBackgroundImage:@"back3.JPG"];
+    }
+    else if (self.lScore>30000 && self.lScore<32000){
+        [self SetBackgroundImage:@"back4.JPG"];
+    }
+    else if (self.lScore>32000 && self.lScore<34000){
+        [self SetBackgroundImage:@"back5.JPG"];
+    }
+    else if (self.lScore>34000 && self.lScore<36000){
+        [self SetBackgroundImage:@"back6.JPG"];
+    }
+    else if (self.lScore>36000 && self.lScore<38000){
+        [self SetBackgroundImage:@"back7.JPG"];
+    }
+    else if (self.lScore>38000 && self.lScore<40000){
+        [self SetBackgroundImage:@"back8.JPG"];
+    }
+    else if (self.lScore>40000 && self.lScore<42000){
+        [self SetBackgroundImage:@"back9.JPG"];
+    }
+    else if (self.lScore>42000 && self.lScore<44000){
+        [self SetBackgroundImage:@"back10.JPG"];
+    }
+    else if (self.lScore>44000 && self.lScore<46000){
+        [self SetBackgroundImage:@"back11.jpg"];
+    }
+    else if (self.lScore>46000 && self.lScore<48000){
+        [self SetBackgroundImage:@"back15.jpg"];
+    }
+    else if (self.lScore>48000 && self.lScore<50000){
+        [self SetBackgroundImage:@"back13.jpg"];
+    }
+    else if (self.lScore>50000 && self.lScore<52000){
+        [self SetBackgroundImage:@"back14.jpg"];
+    }
+    else if (self.lScore>52000){
+        [self SetBackgroundImage:@"back12.jpg"];
     }
 }
 
@@ -256,15 +297,18 @@ int levelUp = 20;
     //increment the duration of the game
     self.duration += 1;
     
-    //count the
     //don't add a target if there are already a lot
-    if ([self NumberOfImagesToHit] >= self.maxObjects){
+    int imagesToHitInView = [self NumberOfImagesToHit];
+    if ( imagesToHitInView>= self.maxObjects){
         return;
     }
     
+    //get the level
+    int currentLevel = self.duration/levelUp;
+    
     //set available speeds based on duration of the game
     int randomSpeedIndex;
-    if((self.duration/levelUp)>numberOfSpeeds){
+    if((currentLevel)>numberOfSpeeds){
         //phase out the lower speeds, so that eventually only the highest speed is chosen
         int minimumSpeed = ((self.duration/levelUp)>=(numberOfSpeeds*2))?numberOfSpeeds-1:(self.duration/levelUp)-numberOfSpeeds;
         
@@ -272,7 +316,10 @@ int levelUp = 20;
     }
     else{
         //every levelUp durations, make another speed available
-        randomSpeedIndex = (int)arc4random_uniform(self.duration/levelUp);
+        randomSpeedIndex = (int)arc4random_uniform(currentLevel);
+        
+        //set max objects to hit
+        self.maxObjects=currentLevel+5;
     }
     
     
@@ -421,14 +468,19 @@ int levelUp = 20;
 }
 
 //count the number of images to hit currently in the view
--(long)NumberOfImagesToHit
+-(int)NumberOfImagesToHit
 {
-    long numberOfImagesToHit=0;
+    int numberOfImagesToHit=0;
     
-    numberOfImagesToHit=[[self.view subviews] count];
+    //get images to hit count
+    NSArray *subviews = [self.view subviews];
+    for (UIView *subview in subviews){
+        if([subview isKindOfClass:[ImageToHit class]]){
+            numberOfImagesToHit+=1;
+        }
+    }
     
     return numberOfImagesToHit;
-    
 }
 
 
